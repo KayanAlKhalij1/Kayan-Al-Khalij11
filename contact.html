@@ -46,33 +46,90 @@
     </div>
   </header>
 
-  <!-- Contact Section -->
-<form
-  action="https://formspree.io/f/mpwlqgno"
-  method="POST"
->
-  <div class="contact-section">
-    <div class="contact-box">
-      <h1>تواصل معنا</h1>
-      <div class="contact-desc">نحن هنا لمساعدتك في تحقيق رؤيتك المعمارية. تواصل معنا للحصول على استشارة مجانية.</div>
-      <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
-        <form class="contact-form" style="flex:2; min-width:260px; max-width:400px;">
-          <input type="text" placeholder="الاسم الكامل" data-i18n="full_name">
-          <input type="email" placeholder="البريد الإلكتروني">
-          <input type="text" placeholder="رقم الهاتف">
-          <textarea placeholder="رسالتك"></textarea>
-          <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
-          <button class="btn btn-primary" data-i18n="send_message">إرسال</button>
-        </form>
-        <div class="contact-info" style="flex:1; min-width:220px; max-width:300px; background:#f8fafc; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:1.5rem 1rem; display:flex; flex-direction:column; gap:1rem; align-items:flex-start;">
-          <div><b>العنوان:</b> الرياض، طريق الملك عبدالعزيز</div>
-          <div><b>الهاتف:</b> 966545666924+</div>
-          <div><b>البريد الإلكتروني:</b> kayanalkhalij.eng1@gmail.com</div>
-          <div><b>ساعات العمل:</b> السبت - الخميس: 9:00ص - 5:00م<br>الجمعة: مغلق</div>
+<!-- Contact Section -->
+<div class="contact-section">
+  <div class="contact-box">
+    <h1 data-i18n="contact">تواصل معنا</h1>
+    
+    <div class="contact-desc" data-i18n="contact_desc">
+      نحن هنا لمساعدتك في تحقيق رؤيتك المعمارية. تواصل معنا للحصول على استشارة مجانية.
+    </div>
+    
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+      
+      <!-- Contact Form -->
+      <form 
+        class="contact-form"
+        action="https://formspree.io/f/mpwlqgno"
+        method="POST"
+        style="flex: 2; min-width: 260px; max-width: 400px;"
+      >
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="الاسم الكامل" 
+          data-i18n="full_name" 
+          required
+        >
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="البريد الإلكتروني" 
+          data-i18n="email" 
+          required
+        >
+        <input 
+          type="text" 
+          name="phone" 
+          placeholder="رقم الهاتف" 
+          data-i18n="phone" 
+          required
+        >
+        <textarea 
+          name="message" 
+          placeholder="رسالتك" 
+          data-i18n="your_message" 
+          required
+        ></textarea>
+        
+        <div class="g-recaptcha" data-sitekey="6LeTuIorAAAAABEV18FyyA22JDwnNwEyoxdUZpCX"></div>
+        
+        <button class="btn btn-primary" data-i18n="send_message">إرسال</button>
+      </form>
+      
+      <!-- Contact Info -->
+      <div 
+        class="contact-info"
+        style="flex: 1; min-width: 220px; max-width: 300px; background: #f8fafc; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 1.5rem 1rem; display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;"
+      >
+        <div>
+          <b data-i18n="address_label">العنوان:</b>
+          <span data-i18n="address">الرياض، طريق الملك عبدالعزيز</span>
+        </div>
+        
+        <div>
+          <b data-i18n="phone_label">الهاتف:</b>
+          <span data-i18n="phone">966545666924+</span>
+        </div>
+        
+        <div>
+          <b data-i18n="email_label">البريد الإلكتروني:</b>
+          <span data-i18n="email">kayanalkhalij.eng1@gmail.com</span>
+        </div>
+        
+        <div>
+          <b data-i18n="work_hours_label">ساعات العمل:</b>
+          <span data-i18n="work_hours">
+            السبت - الخميس: 9:00ص - 5:00م<br>
+            الجمعة: مغلق
+          </span>
         </div>
       </div>
+      
     </div>
   </div>
+</div>
+
 
   <!-- Footer -->
   <footer class="footer">

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="contact_title">اتصل بنا | كيان الخليج</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body lang="ar">
+  <!-- Header: Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-right">
+        <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="address">الرياض، طريق الملك عبدالعزيز</span></span>
+        <span><i class="fa-solid fa-envelope"></i> <span data-i18n="email">kayanalkhalij.eng1@gmail.com</span></span>
+        <span><i class="fa-solid fa-phone"></i> <span data-i18n="phone">966545666924+</span></span>
+      </div>
+      <div class="lang-switcher">
+        <button id="lang-toggle" class="lang-btn"><span class="flag">🇸🇦</span> <span data-i18n="arabic">العربية</span></button>
+        <div id="lang-dropdown" class="lang-dropdown" style="display:none;">
+          <button data-lang="ar"><span class="flag">🇸🇦</span> العربية</button>
+          <button data-lang="en"><span class="flag">🇬🇧</span> English</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header: Main Navigation -->
+  <header class="main-header">
+    <div class="container nav-flex">
+      <div class="logo-block">
+        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="Kayan El Khalij Logo"></div>
+        <div class="logo-text">
+          <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
+          <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a>
+        <a href="products.html"><i class="fa-solid fa-box"></i> <span data-i18n="products">منتجاتنا</span></a>
+        <a href="about.html"><i class="fa-solid fa-users"></i> <span data-i18n="about">من نحن</span></a>
+        <a href="contact.html" class="active"><i class="fa-solid fa-phone"></i> <span data-i18n="contact">اتصل بنا</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <div class="contact-section">
+    <div class="contact-box">
+      <h1>تواصل معنا</h1>
+      <div class="contact-desc">نحن هنا لمساعدتك في تحقيق رؤيتك المعمارية. تواصل معنا للحصول على استشارة مجانية.</div>
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+        <form class="contact-form" style="flex:2; min-width:260px; max-width:400px;">
+          <input type="text" placeholder="الاسم الكامل" data-i18n="full_name">
+          <input type="email" placeholder="البريد الإلكتروني">
+          <input type="text" placeholder="رقم الهاتف">
+          <textarea placeholder="رسالتك"></textarea>
+          <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+          <button class="btn btn-primary" data-i18n="send_message">إرسال</button>
+        </form>
+        <div class="contact-info" style="flex:1; min-width:220px; max-width:300px; background:#f8fafc; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.06); padding:1.5rem 1rem; display:flex; flex-direction:column; gap:1rem; align-items:flex-start;">
+          <div><b>العنوان:</b> الرياض، طريق الملك عبدالعزيز</div>
+          <div><b>الهاتف:</b> 966545666924+</div>
+          <div><b>البريد الإلكتروني:</b> kayanalkhalij.eng1@gmail.com</div>
+          <div><b>ساعات العمل:</b> السبت - الخميس: 9:00ص - 5:00م<br>الجمعة: مغلق</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col footer-logo-block">
+        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="Kayan El Khalij Logo"></div>
+        <div class="logo-text">
+          <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
+          <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title" data-i18n="quick_links">روابط سريعة</div>
+        <ul>
+          <li><a href="index.html" data-i18n="home">الرئيسية</a></li>
+          <li><a href="products.html" data-i18n="products">منتجاتنا</a></li>
+          <li><a href="about.html" data-i18n="about">من نحن</a></li>
+          <li><a href="contact.html" data-i18n="contact">اتصل بنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title" data-i18n="services">خدماتنا</div>
+        <ul>
+          <li><span data-i18n="service1">كرتن وول وكلادينج</span></li>
+          <li><span data-i18n="service2">نوافذ وأبواب</span></li>
+          <li><span data-i18n="service3">كابائن الدش</span></li>
+          <li><span data-i18n="service4">درابزين ورولر شتر</span></li>
+          <li><span data-i18n="service5">قواطع زجاجية ومطابخ</span></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-socials">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/966545666924" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="copyright">© 2025 كيان الخليج للصناعة. جميع الحقوق محفوظة.</span>
+      <div>
+        <a href="#" data-i18n="privacy">سياسة الخصوصية</a>
+        <a href="#" data-i18n="terms">الشروط والأحكام</a>
+      </div>
+    </div>
+  </footer>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="main.js"></script>
+</body>
+</html> 

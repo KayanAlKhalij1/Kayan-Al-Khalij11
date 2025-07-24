@@ -92,10 +92,19 @@
           required
         ></textarea>
         
-        <div class="g-recaptcha" data-sitekey="6Lf9Go4rAAAAAF8-nxzw10hp8wQumQAI_i4f5SF_"></div>
-        
-        <button class="btn btn-primary" data-i18n="send_message">إرسال</button>
-      </form>
+<form action="contact.php" method="POST">
+  <!-- عناصر النموذج هنا (مثل الاسم، البريد، الرسالة...) -->
+
+  <!-- كود reCAPTCHA -->
+  <div class="g-recaptcha" data-sitekey="6Lf9Go4rAAAAAF8-nxzw10hp8wQumQAI_i4f5SF_"></div>
+
+  <!-- زر الإرسال -->
+  <button type="submit" class="btn btn-primary" data-i18n="send_message">إرسال</button>
+</form>
+
+<!-- سكربت reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
       
       <!-- Contact Info -->
       <div 

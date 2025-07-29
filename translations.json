@@ -108,7 +108,7 @@
     "company_name": "كيان الخليج للصناعة",
     "company_name_en": "Kayan Alkhalij Manufacturing",
     "address": "الرياض، طريق الملك عبدالعزيز",
-    "email": "kayanalkhalij.eng1@gmail.com",
+    "email": "info@kayanfactory.com",
     "phone": "966545666924+",
     "arabic": "العربية",
     "english": "الإنجليزية",
@@ -193,6 +193,7 @@
     "star_rating": "تقييم نجوم",
     "our_gallery": "معرض أعمالنا",
     "add_review": "أضف رأيك",
-    "comments_desc": "نفتخر بثقة عملائنا الكرام. اقرأ آراءهم وتجاربهم معنا"
+    "comments_desc": "نفتخر بثقة عملائنا الكرام. اقرأ آراءهم وتجاربهم معنا",
+    "working_hours": "ساعات العمل: السبت - الخميس: 8:00 ص - 6:00 م | الجمعة: مغلق"
   }
-} 
+}

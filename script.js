@@ -180,7 +180,6 @@ function initializeLanguageSwitcher() {
       setLanguage(lang);
       langDropdown.style.display = 'none';
     });
-  });
   }
 }
 
@@ -598,7 +597,7 @@ function initializeSEO() {
       "@type": "ContactPoint",
       "telephone": "+966545666924",
       "contactType": "customer service",
-      "email": "kayanalkhalij.eng1@gmail.com"
+      "email": "info@kayanfactory.com"
     }
   };
   
@@ -996,4 +995,6 @@ window.KayanWebsite = {
   showNotification,
   initializeCarousel,
   initializeCommentsSystem
-}; 
+};
+
+// لا يوجد نص ساعات العمل ثابت في js، كل شيء يعتمد على الترجمة أو HTML

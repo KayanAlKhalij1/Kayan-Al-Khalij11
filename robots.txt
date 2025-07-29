@@ -1,0 +1,55 @@
+# Kayan Al Khalij Website - Robots.txt
+# Version: 2.0.0
+
+User-agent: *
+Allow: /
+
+# Allow all pages
+Allow: /index.html
+Allow: /about.html
+Allow: /products.html
+Allow: /contact.html
+Allow: /comments.html
+
+# Allow assets
+Allow: /style.css
+Allow: /script.js
+Allow: /manifest.json
+Allow: /translations.json
+Allow: /sitemap.xml
+
+# Allow images
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.webp
+
+# Allow fonts
+Allow: /*.woff
+Allow: /*.woff2
+Allow: /*.ttf
+Allow: /*.eot
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Disallow development files
+Disallow: /*.log
+Disallow: /*.tmp
+Disallow: /*.bak
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://kayanfactory.com/sitemap.xml
+
+# Additional sitemaps
+Sitemap: https://kayanfactory.com/sitemap-images.xml
+Sitemap: https://kayanfactory.com/sitemap-videos.xml
+
+# Host directive
+Host: https://kayanfactory.com 

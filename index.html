@@ -4,31 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="title">كيان الخليج | الصفحة الرئيسية</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body lang="ar">
-  <!-- Header: Top Bar -->
+  <!-- Top Bar -->
   <div class="top-bar">
     <div class="container">
       <div class="top-bar-right">
-        <span class="top-bar-item">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="top-bar-label" data-i18n="address">الرياض، طريق الملك عبدالعزيز</span>
-        </span>
-        <span class="top-bar-item">
-          <i class="fa-solid fa-envelope"></i>
-          <a href="mailto:info@kayanfactory.com" class="top-bar-link" data-i18n="email">info@kayanfacory.com</a>
-        </span>
-        <span class="top-bar-item">
-          <i class="fa-solid fa-phone"></i>
-          <a href="tel:+966545666924" class="top-bar-link" data-i18n="phone">966545666924+</a>
-        </span>
+        <span class="top-bar-item"><i class="fa-solid fa-location-dot"></i><span data-i18n="address">الرياض، طريق الملك عبدالعزيز</span></span>
+        <span class="top-bar-item"><i class="fa-solid fa-envelope"></i><a href="mailto:kayanalkhalij.eng1@gmail.com" class="top-bar-link" data-i18n="email">kayanalkhalij.eng1@gmail.com</a></span>
+        <span class="top-bar-item"><i class="fa-solid fa-phone"></i><a href="tel:+966545666924" class="top-bar-link" data-i18n="phone">+966545666924</a></span>
       </div>
       <div class="lang-switcher">
-        <button id="lang-toggle" class="lang-btn"><span class="flag">🇸🇦</span> <span data-i18n="arabic">العربية</span></button>
+        <button id="lang-toggle" class="lang-btn" type="button"><span class="flag">🇸🇦</span> <span data-i18n="arabic">العربية</span></button>
         <div id="lang-dropdown" class="lang-dropdown" style="display:none;">
           <button data-lang="ar" class="lang-option"><span class="flag">🇸🇦</span> <span data-i18n="arabic">العربية</span></button>
           <button data-lang="en" class="lang-option"><span class="flag">🇬🇧</span> <span data-i18n="english">English</span></button>
@@ -36,11 +27,11 @@
       </div>
     </div>
   </div>
-  <!-- Header: Main Navigation -->
+  <!-- Header -->
   <header class="main-header">
     <div class="container nav-flex">
       <div class="logo-block">
-        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="Kayan El Khalij Logo"></div>
+        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
         <div class="logo-text">
           <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
           <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
@@ -49,34 +40,100 @@
       <nav class="main-nav">
         <a href="index.html" class="active"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a>
         <a href="products.html"><i class="fa-solid fa-box"></i> <span data-i18n="products">منتجاتنا</span></a>
+        <a href="projects.html"><i class="fa-solid fa-diagram-project"></i> <span>مشاريعنا</span></a>
         <a href="about.html"><i class="fa-solid fa-users"></i> <span data-i18n="about">من نحن</span></a>
         <a href="contact.html"><i class="fa-solid fa-phone"></i> <span data-i18n="contact">اتصل بنا</span></a>
       </nav>
     </div>
   </header>
-
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
-    <img src="Screenshot 2025-07-20 213250_1753036605407.png" alt="خلفية كيان الخليج" class="hero-bg-img">
-    <h1 data-i18n="hero_title">كيان الخليج للصناعة</h1>
-    <p data-i18n="hero_subtitle">رؤية هندسية متطورة</p>
-    <a href="products.html" class="btn btn-primary" data-i18n="browse_products">تصفح منتجاتنا</a>
-    
+    <img src="Screenshot 2025-07-20 213250_1753036605407.png" alt="خلفية كيان الخليج" class="hero-bg-img" loading="eager">
+    <div class="hero-content" data-aos="fade-up">
+      <h1 data-i18n="hero_title">كيان الخليج للصناعة</h1>
+      <p data-i18n="hero_subtitle">رؤية هندسية متطورة</p>
+      <a href="products.html" class="btn btn-primary" data-i18n="browse_products"><i class="fa-solid fa-arrow-left"></i> تصفح منتجاتنا</a>
+    </div>
+    <div class="floating-elements">
+      <div class="floating-element"><i class="fa-solid fa-building"></i></div>
+      <div class="floating-element"><i class="fa-solid fa-cog"></i></div>
+      <div class="floating-element"><i class="fa-solid fa-tools"></i></div>
+    </div>
   </section>
-
-  <!-- Quick Links Section -->
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-icon"><i class="fa-solid fa-building"></i></div><div class="stat-number" data-count="150">0</div><div class="stat-label" data-i18n="projects_completed">مشروع مكتمل</div></div>
+        <div class="stat-item"><div class="stat-icon"><i class="fa-solid fa-users"></i></div><div class="stat-number" data-count="50">0</div><div class="stat-label" data-i18n="happy_clients">عميل سعيد</div></div>
+        <div class="stat-item"><div class="stat-icon"><i class="fa-solid fa-award"></i></div><div class="stat-number" data-count="10">0</div><div class="stat-label" data-i18n="years_experience">سنوات خبرة</div></div>
+        <div class="stat-item"><div class="stat-icon"><i class="fa-solid fa-star"></i></div><div class="stat-number" data-count="5">0</div><div class="stat-label" data-i18n="star_rating">تقييم نجوم</div></div>
+      </div>
+    </div>
+  </section>
+  <!-- Quick Links -->
   <section class="quick-links">
-    <a href="about.html" class="quick-link" data-i18n="about">من نحن</a>
-    <a href="products.html" class="quick-link" data-i18n="products">منتجاتنا</a>
-    <a href="comments.html" class="quick-link" data-i18n="comments">آراء العملاء</a>
-    <a href="contact.html" class="quick-link" data-i18n="contact">اتصل بنا</a>
+    <div class="container">
+      <a href="about.html" class="quick-link"><i class="fa-solid fa-users"></i><span data-i18n="about">من نحن</span></a>
+      <a href="products.html" class="quick-link"><i class="fa-solid fa-box"></i><span data-i18n="products">منتجاتنا</span></a>
+      <a href="contact.html" class="quick-link"><i class="fa-solid fa-phone"></i><span data-i18n="contact">اتصل بنا</span></a>
+    </div>
   </section>
-
+  <!-- Services -->
+  <section class="services-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="our_services">خدماتنا</h2>
+      <div class="services-grid">
+        <div class="service-card"><div class="service-icon"><i class="fa-solid fa-building"></i></div><h3 data-i18n="service1">كرتن وول وكلادينج</h3><p data-i18n="service1_desc">تصميم وتنفيذ واجهات المباني الزجاجية والكلادينج بأحدث التقنيات</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fa-solid fa-door-open"></i></div><h3 data-i18n="service2">نوافذ وأبواب</h3><p data-i18n="service2_desc">تصنيع وتركيب النوافذ والأبواب الألمنيوم عالية الجودة</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fa-solid fa-shower"></i></div><h3 data-i18n="service3">كابائن الدش</h3><p data-i18n="service3_desc">تصميم وتصنيع كابائن الدش المخصصة بأحدث التصاميم</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fa-solid fa-stairs"></i></div><h3 data-i18n="service4">درابزين ورولر شتر</h3><p data-i18n="service4_desc">تصنيع وتركيب الدرابزين والرولر شتر بأعلى معايير الجودة</p></div>
+        <div class="service-card"><div class="service-icon"><i class="fa-solid fa-glass"></i></div><h3 data-i18n="service5">قواطع زجاجية ومطابخ</h3><p data-i18n="service5_desc">تصميم وتنفيذ القواطع الزجاجية والمطابخ المخصصة</p></div>
+      </div>
+    </div>
+  </section>
+  <!-- Gallery -->
+  <section class="gallery-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="our_gallery">معرض أعمالنا</h2>
+      <div class="carousel-section">
+        <div class="carousel-wrapper">
+          <div id="carousel" class="carousel"></div>
+          <button id="prev" class="carousel-btn"><i class="fa-solid fa-chevron-right"></i></button>
+          <button id="next" class="carousel-btn"><i class="fa-solid fa-chevron-left"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <div class="container">
+      <h2 class="section-title" data-i18n="client_testimonials">آراء العملاء</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card"><div class="testimonial-content"><div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"خدمة ممتازة وجودة عالية في العمل. أنصح بالتعامل معهم"</p><div class="testimonial-author"><strong>أحمد محمد</strong><span>مدير مشروع</span></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-content"><div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"فريق محترف ومتخصص. سعر مناسب وجودة ممتازة"</p><div class="testimonial-author"><strong>سارة أحمد</strong><span>مصممة ديكور</span></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-content"><div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>"أفضل شركة في مجال الكرتن وول. أنصح الجميع"</p><div class="testimonial-author"><strong>محمد علي</strong><span>مقاول</span></div></div></div>
+      </div>
+    </div>
+  </section>
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 data-i18n="ready_to_start">هل أنت مستعد للبدء؟</h2>
+        <p data-i18n="cta_description">تواصل معنا اليوم واحصل على عرض سعر مجاني لمشروعك</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn btn-primary" data-i18n="contact_us"><i class="fa-solid fa-phone"></i> اتصل بنا</a>
+          <a href="products.html" class="btn btn-secondary" data-i18n="view_products"><i class="fa-solid fa-eye"></i> تصفح المنتجات</a>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-col footer-logo-block">
-        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="Kayan El Khalij Logo"></div>
+        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
         <div class="logo-text">
           <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
           <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
@@ -102,21 +159,35 @@
         </ul>
       </div>
       <div class="footer-col footer-socials">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/share/1AiZX5aWux/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/Kayanalkhalij?t=ju5kCDg-ElJ1n_7MiXtvBw&s=09" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
         <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://wa.me/966545666924" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/kayanalkhalij.eng1?igsh=MTVmMGlidWJlOGZlZA==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
     <div class="footer-bottom">
       <span data-i18n="copyright">© 2025 كيان الخليج للصناعة. جميع الحقوق محفوظة.</span>
       <div>
-        <a href="#" data-i18n="privacy">سياسة الخصوصية</a>
-        <a href="#" data-i18n="terms">الشروط والأحكام</a>
+        <a href="privacy.html" data-i18n="privacy">سياسة الخصوصية</a>
+        <a href="terms.html" data-i18n="terms">الشروط والأحكام</a>
       </div>
     </div>
   </footer>
-  <script src="main.js"></script>
+  <button id="back-to-top" class="back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
 </body>
-</html> 
+</html>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" aria-label="العودة للأعلى">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <script src="script.js" defer></script>
+</body>
+</html>

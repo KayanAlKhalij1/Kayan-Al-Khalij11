@@ -3,104 +3,232 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="notfound_title">الصفحة غير موجودة | كيان الخليج</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <title>404 - الصفحة غير موجودة | كيان الخليج</title>
+  <meta name="description" content="الصفحة المطلوبة غير موجودة">
+  <link rel="icon" href="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" type="image/jpeg">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-color) 0%, #1565c0 100%);
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .error-page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.3;
+      animation: grain 20s linear infinite;
+    }
+    
+    .error-content {
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .error-number {
+      font-size: 8rem;
+      font-weight: 900;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .error-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .error-message {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+    
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+    
+    .btn-home {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-medium);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-medium);
+    }
+    
+    .btn-home:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-heavy);
+    }
+    
+    .btn-back {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all var(--transition-medium);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+    }
+    
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .floating-element {
+      position: absolute;
+      color: rgba(255, 255, 255, 0.1);
+      font-size: 2rem;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .floating-element:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .floating-element:nth-child(2) {
+      top: 60%;
+      right: 15%;
+      animation-delay: 2s;
+    }
+    
+    .floating-element:nth-child(3) {
+      bottom: 30%;
+      left: 20%;
+      animation-delay: 4s;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(120deg); }
+      66% { transform: translateY(10px) rotate(240deg); }
+    }
+    
+    @media (max-width: 600px) {
+      .error-number {
+        font-size: 6rem;
+      }
+      
+      .error-title {
+        font-size: 2rem;
+      }
+      
+      .error-message {
+        font-size: 1rem;
+      }
+      
+      .error-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn-home,
+      .btn-back {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body lang="ar">
-  <!-- Header: Top Bar -->
-  <div class="top-bar">
-    <div class="container">
-      <div class="top-bar-right">
-        <span><i class="fa-solid fa-location-dot"></i> <span data-i18n="address">الرياض، طريق الملك عبدالعزيز</span></span>
-        <span><i class="fa-solid fa-envelope"></i> <span data-i18n="email">kayanalkhalij.eng1@gmail.com</span></span>
-        <span><i class="fa-solid fa-phone"></i> <span data-i18n="phone">966545666924+</span></span>
+  <div class="error-page">
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+      <div class="floating-element">
+        <i class="fa-solid fa-building"></i>
       </div>
-      <div class="lang-switcher">
-        <button id="lang-toggle" class="lang-btn"><span class="flag">🇸🇦</span> <span data-i18n="arabic">العربية</span></button>
-        <div id="lang-dropdown" class="lang-dropdown" style="display:none;">
-          <button data-lang="ar"><span class="flag">🇸🇦</span> العربية</button>
-          <button data-lang="en"><span class="flag">🇬🇧</span> English</button>
-          <button data-lang="fr"><span class="flag">🇫🇷</span> Français</button>
-          <button data-lang="tr"><span class="flag">🇹🇷</span> Türkçe</button>
-        </div>
+      <div class="floating-element">
+        <i class="fa-solid fa-cog"></i>
+      </div>
+      <div class="floating-element">
+        <i class="fa-solid fa-tools"></i>
+      </div>
+    </div>
+    
+    <div class="error-content">
+      <div class="error-number">404</div>
+      <h1 class="error-title">الصفحة غير موجودة</h1>
+      <p class="error-message">
+        عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها إلى مكان آخر.
+      </p>
+      <div class="error-actions">
+        <a href="index.html" class="btn-home">
+          <i class="fa-solid fa-home"></i>
+          العودة للرئيسية
+        </a>
+        <button onclick="history.back()" class="btn-back">
+          <i class="fa-solid fa-arrow-right"></i>
+          العودة للصفحة السابقة
+        </button>
       </div>
     </div>
   </div>
-  <!-- Header: Main Navigation -->
-  <header class="main-header">
-    <div class="container nav-flex">
-      <div class="logo-block">
-        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="Kayan El Khalij Logo"></div>
-        <div class="logo-text">
-          <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
-          <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
-        </div>
-      </div>
-      <nav class="main-nav">
-        <a href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a>
-        <a href="products.html"><i class="fa-solid fa-box"></i> <span data-i18n="products">منتجاتنا</span></a>
-        <a href="about.html"><i class="fa-solid fa-users"></i> <span data-i18n="about">من نحن</span></a>
-        <a href="contact.html"><i class="fa-solid fa-phone"></i> <span data-i18n="contact">اتصل بنا</span></a>
-        <a href="comments.html"><i class="fa-solid fa-star"></i> <span data-i18n="comments">آراء العملاء</span></a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- 404 Section -->
-  <section class="notfound-section">
-    <h1>404</h1>
-    <p data-i18n="notfound_msg">عذراً، الصفحة التي تبحث عنها غير موجودة.</p>
-    <a href="index.html" class="btn btn-primary" data-i18n="back_home">العودة إلى الصفحة الرئيسية</a>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-col footer-logo-block">
-        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="Kayan El Khalij Logo"></div>
-        <div class="logo-text">
-          <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
-          <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
-        </div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-title" data-i18n="quick_links">روابط سريعة</div>
-        <ul>
-          <li><a href="index.html" data-i18n="home">الرئيسية</a></li>
-          <li><a href="products.html" data-i18n="products">منتجاتنا</a></li>
-          <li><a href="about.html" data-i18n="about">من نحن</a></li>
-          <li><a href="contact.html" data-i18n="contact">اتصل بنا</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-title" data-i18n="services">خدماتنا</div>
-        <ul>
-          <li><span data-i18n="service1">كرتن وول وكلادينج</span></li>
-          <li><span data-i18n="service2">نوافذ وأبواب</span></li>
-          <li><span data-i18n="service3">كابائن الدش</span></li>
-          <li><span data-i18n="service4">درابزين ورولر شتر</span></li>
-          <li><span data-i18n="service5">قواطع زجاجية ومطابخ</span></li>
-        </ul>
-      </div>
-      <div class="footer-col footer-socials">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://wa.me/966545666924" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span data-i18n="copyright">© 2025 كيان الخليج للصناعة. جميع الحقوق محفوظة.</span>
-      <div>
-        <a href="#" data-i18n="privacy">سياسة الخصوصية</a>
-        <a href="#" data-i18n="terms">الشروط والأحكام</a>
-      </div>
-    </div>
-  </footer>
-  <script src="main.js"></script>
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html> 

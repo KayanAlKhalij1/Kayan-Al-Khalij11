@@ -189,7 +189,7 @@ npm run compress
 
 ### معلومات الشركة
 - **الاسم**: كيان الخليج للصناعة
-- **البريد الإلكتروني**: kayanalkhalij.eng1@gmail.com
+- **البريد الإلكتروني**: info@kayanfactory.com
 - **الهاتف**: +966545666924
 - **العنوان**: الرياض، طريق الملك عبدالعزيز
 
@@ -205,7 +205,7 @@ npm run compress
 
 للتطوير والتحسينات، يرجى التواصل مع فريق التطوير عبر:
 - **GitHub Issues**: للإبلاغ عن الأخطاء
-- **Email**: kayanalkhalij.eng1@gmail.com
+- **Email**: info@kayanfactory.com
 
 ---
 

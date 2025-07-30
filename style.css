@@ -2379,3 +2379,514 @@ section {
 }
 
 /* لا يوجد نص ساعات العمل في CSS، لا حاجة لأي تعديل */
+
+/* Projects Page Specific Styles */
+.projects-hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #1565c0 50%, #1976d2 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.projects-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+.projects-hero .hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+}
+
+.projects-hero .hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.projects-hero .hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.projects-categories {
+  padding: 4rem 0;
+  background: var(--bg-primary);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-light);
+  transition: all var(--transition-medium);
+  cursor: pointer;
+  position: relative;
+  transform: translateY(0);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.project-card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.project-card:hover .project-card-image img {
+  transform: scale(1.1);
+}
+
+.project-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(13, 71, 161, 0.8) 0%, rgba(21, 101, 192, 0.6) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+}
+
+.project-card:hover .project-card-overlay {
+  opacity: 1;
+}
+
+.project-card-overlay i {
+  color: #fff;
+  font-size: 2rem;
+  transform: translateX(0);
+  transition: transform var(--transition-medium);
+}
+
+.project-card:hover .project-card-overlay i {
+  transform: translateX(-10px);
+}
+
+.project-card-content {
+  padding: 1.5rem;
+}
+
+.project-card-content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-card-content h3 i {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.project-card-content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.project-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.project-stats i {
+  color: var(--primary-color);
+}
+
+.projects-stats-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #1565c0 100%);
+  color: #fff;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-stats-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  opacity: 0.3;
+}
+
+.projects-stats-section .stats-grid {
+  position: relative;
+  z-index: 2;
+}
+
+.projects-stats-section .stat-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.projects-stats-section .stat-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.projects-stats-section .stat-icon {
+  color: var(--secondary-color);
+}
+
+.projects-stats-section .stat-number {
+  color: #fff;
+}
+
+.projects-stats-section .stat-label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive Design for Projects Page */
+@media (max-width: 900px) {
+  .projects-hero .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .projects-hero .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-hero .hero-title {
+    font-size: 2rem;
+  }
+  
+  .projects-hero .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .project-card-content {
+    padding: 1rem;
+  }
+  
+  .project-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+
+/* UPVC Colors Section Styles */
+.upvc-colors-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.upvc-colors-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(13,71,161,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+  opacity: 0.5;
+}
+
+.upvc-colors-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.upvc-colors-section .section-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.color-models-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.color-model-card {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  transition: var(--transition-medium);
+  border: 1px solid var(--border-color);
+}
+
+.color-model-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.color-swatch {
+  position: relative;
+  overflow: hidden;
+}
+
+.color-swatch img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: var(--transition-medium);
+}
+
+.color-model-card:hover .color-swatch img {
+  transform: scale(1.05);
+}
+
+.color-info {
+  padding: 2rem;
+}
+
+.color-info h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.color-info p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.color-list {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.color-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.color-list li:last-child {
+  border-bottom: none;
+}
+
+.color-name {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-left: 0.5rem;
+  min-width: 120px;
+}
+
+.color-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.color-features span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.color-features i {
+  color: var(--primary-color);
+  font-size: 0.8rem;
+}
+
+.color-benefits {
+  margin-top: 3rem;
+}
+
+.color-benefits h3 {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-item {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-medium);
+  border: 1px solid var(--border-color);
+}
+
+.benefit-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.benefit-item i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.benefit-item h4 {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.benefit-item p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Responsive Design for UPVC Colors Section */
+@media (max-width: 900px) {
+  .upvc-colors-section {
+    padding: 3rem 0;
+  }
+  
+  .color-models-grid {
+    gap: 1.5rem;
+  }
+  
+  .color-info {
+    padding: 1.5rem;
+  }
+  
+  .color-info h3 {
+    font-size: 1.3rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .benefit-item {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .upvc-colors-section {
+    padding: 2rem 0;
+  }
+  
+  .upvc-colors-section .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .color-swatch img {
+    height: 200px;
+  }
+  
+  .color-info {
+    padding: 1rem;
+  }
+  
+  .color-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .color-features {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .color-features span {
+    justify-content: center;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .benefit-item {
+    padding: 1rem;
+  }
+  
+  .benefit-item i {
+    font-size: 2rem;
+  }
+  
+  .benefit-item h4 {
+    font-size: 1.1rem;
+  }
+}

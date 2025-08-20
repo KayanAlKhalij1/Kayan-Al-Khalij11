@@ -295,7 +295,6 @@ function initializeSmoothScrolling() {
 function initializeMobileMenu() {
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const mainNav = document.querySelector('.main-nav');
-  let menuOverlay = null;
   
   console.log('Mobile menu initialization:', { mobileMenuBtn, mainNav });
   
@@ -303,37 +302,30 @@ function initializeMobileMenu() {
     console.log('Mobile menu elements found, adding event listeners');
     
     // Toggle mobile menu
-    mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       console.log('Mobile menu button clicked');
+      
       const willOpen = !mainNav.classList.contains('mobile-active');
       mainNav.classList.toggle('mobile-active');
       mobileMenuBtn.classList.toggle('active');
       mobileMenuBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
       document.body.classList.toggle('menu-open', willOpen);
-      if (willOpen) {
-        if (!menuOverlay) {
-          menuOverlay = createMenuOverlay();
-        }
-        menuOverlay.style.display = 'block';
-        trapFocus(mainNav);
-      } else {
-        if (menuOverlay) menuOverlay.style.display = 'none';
-        releaseFocusTrap();
-      }
+      
       console.log('Mobile menu toggled:', mainNav.classList.contains('mobile-active'));
     });
     
     // Close mobile menu when clicking on any link
     const navLinks = mainNav.querySelectorAll('a');
     navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
         console.log('Nav link clicked, closing mobile menu');
+        // Don't prevent default - let the link work normally
         mainNav.classList.remove('mobile-active');
         mobileMenuBtn.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
-        if (menuOverlay) menuOverlay.style.display = 'none';
-        releaseFocusTrap();
       });
     });
     
@@ -344,8 +336,6 @@ function initializeMobileMenu() {
         mobileMenuBtn.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
-        if (menuOverlay) menuOverlay.style.display = 'none';
-        releaseFocusTrap();
       }
     });
     
@@ -356,8 +346,6 @@ function initializeMobileMenu() {
         mobileMenuBtn.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
-        if (menuOverlay) menuOverlay.style.display = 'none';
-        releaseFocusTrap();
       }
     });
 
@@ -368,70 +356,10 @@ function initializeMobileMenu() {
         mobileMenuBtn.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('menu-open');
-        if (menuOverlay) menuOverlay.style.display = 'none';
-        releaseFocusTrap();
       }
     });
   } else {
     console.error('Mobile menu elements not found:', { mobileMenuBtn, mainNav });
-  }
-}
-
-// Create overlay behind mobile menu
-function createMenuOverlay() {
-  const overlay = document.createElement('div');
-  overlay.className = 'menu-overlay';
-  overlay.setAttribute('aria-hidden', 'true');
-  overlay.addEventListener('click', () => {
-    const mainNav = document.querySelector('.main-nav');
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    if (mainNav && mobileMenuBtn) {
-      mainNav.classList.remove('mobile-active');
-      mobileMenuBtn.classList.remove('active');
-      mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('menu-open');
-      overlay.style.display = 'none';
-      releaseFocusTrap();
-    }
-  });
-  document.body.appendChild(overlay);
-  return overlay;
-}
-
-// Focus trap helpers for accessibility
-let restoreFocusElement = null;
-function trapFocus(container) {
-  restoreFocusElement = document.activeElement;
-  const focusableSelectors = 'a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
-  const focusable = Array.from(container.querySelectorAll(focusableSelectors)).filter(el => !el.hasAttribute('disabled'));
-  if (focusable.length) {
-    focusable[0].focus();
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    function handleTab(e) {
-      if (e.key !== 'Tab') return;
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    }
-    container.addEventListener('keydown', handleTab);
-    container.__trapHandler = handleTab;
-  }
-}
-
-function releaseFocusTrap() {
-  const container = document.querySelector('.main-nav');
-  if (container && container.__trapHandler) {
-    container.removeEventListener('keydown', container.__trapHandler);
-    delete container.__trapHandler;
-  }
-  if (restoreFocusElement) {
-    try { restoreFocusElement.focus(); } catch(_) {}
-    restoreFocusElement = null;
   }
 }
 

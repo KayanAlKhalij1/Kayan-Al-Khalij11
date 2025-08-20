@@ -13,32 +13,19 @@ const STATIC_FILES = [
   '/products.html',
   '/contact.html',
   '/comments.html',
-  '/404.html',
   '/style.css',
   '/script.js',
   '/manifest.json',
   '/translations.json',
   '/robots.txt',
-  '/sitemap.xml',
-  '/WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg',
-  '/Screenshot 2025-07-20 213250_1753036605407.png',
-  '/Screenshot 2025-07-20 213311_1753036605407.png',
-  '/Screenshot 2025-07-20 213323_1753036605406.png',
-  '/Screenshot 2025-07-20 213337_1753036605405.png',
-  '/Screenshot 2025-07-20 213351_1753036615329.png',
-  '/Screenshot 2025-07-20 213404_1753036615328.png',
-  '/Screenshot 2025-07-20 213415_1753036615327.png',
-  '/Screenshot 2025-07-20 213428_1753036605405.png',
-  '/Screenshot 2025-07-20 213440_1753036605404.png',
-  '/Screenshot 2025-07-20 213452_1753036605404.png',
-  '/Screenshot 2025-07-20 213507_1753036605402.png'
+  '/sitemap.xml'
 ];
 
 // External resources to cache
 const EXTERNAL_RESOURCES = [
-  'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap',
+  'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-  'https://unpkg.com/aos@2.3.4/dist/aos.js',
+  'https://unpkg.com/aos@2.3.1/dist/aos.js',
   'https://unpkg.com/gsap@3.12.2/dist/gsap.min.js',
   'https://unpkg.com/swiper@11/swiper-bundle.min.js',
   'https://unpkg.com/swiper@11/swiper-bundle.min.css'
@@ -191,8 +178,8 @@ self.addEventListener('push', event => {
   
   const options = {
     body: event.data ? event.data.text() : 'كيان الخليج للصناعة',
-    icon: '/WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg',
-    badge: '/WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg',
+    icon: '/window_icon_125687.svg',
+    badge: '/window_icon_125687.svg',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -202,12 +189,12 @@ self.addEventListener('push', event => {
       {
         action: 'explore',
         title: 'تصفح الموقع',
-        icon: '/WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg'
+        icon: '/window_icon_125687.svg'
       },
       {
         action: 'close',
         title: 'إغلاق',
-        icon: '/WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg'
+        icon: '/window_icon_125687.svg'
       }
     ]
   };

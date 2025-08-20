@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Menu Test</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body lang="ar">
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container nav-flex">
+      <div class="logo-block">
+        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
+        <div class="logo-text">
+          <div class="logo-title">كيان الخليج للصناعة</div>
+          <div class="logo-sub">Kayan Alkhalij Manufacturing</div>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="active"><i class="fa-solid fa-house"></i> <span>الرئيسية</span></a>
+        <a href="products.html"><i class="fa-solid fa-box"></i> <span>منتجاتنا</span></a>
+        <a href="projects.html"><i class="fa-solid fa-diagram-project"></i> <span>مشاريعنا</span></a>
+        <a href="about.html"><i class="fa-solid fa-users"></i> <span>من نحن</span></a>
+        <a href="contact.html"><i class="fa-solid fa-phone"></i> <span>اتصل بنا</span></a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div style="padding: 2rem; text-align: center;">
+    <h1>Mobile Menu Test</h1>
+    <p>Resize your browser window to mobile size to test the hamburger menu.</p>
+    <p>The mobile menu button should appear on screens smaller than 900px.</p>
+    <p>Check the browser console for debugging information.</p>
+  </div>
+
+  <script>
+    // Add immediate debugging
+    console.log('Test page loaded');
+    console.log('Mobile menu button:', document.querySelector('.mobile-menu-btn'));
+    console.log('Main nav:', document.querySelector('.main-nav'));
+  </script>
+  <script src="script.js"></script>
+</body>
+</html> 

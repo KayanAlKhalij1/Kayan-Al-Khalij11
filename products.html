@@ -6,7 +6,7 @@
   <title data-i18n="products_title">منتجاتنا | كيان الخليج</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" type="image/jpeg">
+  <link rel="icon" href="window_icon_125687.svg" type="image/svg+xml">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body lang="ar">
@@ -18,14 +18,15 @@
           <i class="fa-solid fa-location-dot"></i>
           <span class="top-bar-label" data-i18n="address">الرياض، طريق الملك عبدالعزيز</span>
         </span>
-        <span class="top-bar-item">
-          <i class="fa-solid fa-envelope"></i>
-          <a href="mailto:info@kayanfactory.com" class="top-bar-link" data-i18n="email">info@kayanfactory.com</a>
-        </span>
+        <span class="top-bar-item"><i class="fa-solid fa-envelope"></i><a href="mailto:info@kayanfactory.com" class="top-bar-link">info@kayanfactory.com</a></span>
         <span class="top-bar-item">
           <i class="fa-solid fa-phone"></i>
           <a href="tel:+966545666924" class="top-bar-link" data-i18n="phone">+966545666924</a>
         </span>
+      </div>
+      <div class="working-hours" style="margin-right:28px;line-height:1.7;">
+        السبت - الخميس: 8:00 ص - 6:00 م<br>
+        الجمعة: مغلق
       </div>
       <div class="lang-switcher">
         <button id="lang-toggle" class="lang-btn" type="button"><span class="flag">🇸🇦</span> <span data-i18n="arabic">العربية</span></button>
@@ -53,6 +54,11 @@
         <a href="about.html"><i class="fa-solid fa-users"></i> <span data-i18n="about">من نحن</span></a>
         <a href="contact.html"><i class="fa-solid fa-phone"></i> <span data-i18n="contact">اتصل بنا</span></a>
       </nav>
+      <button class="mobile-menu-btn" aria-label="القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 
@@ -138,5 +144,44 @@
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
+  <style>
+    @media (max-width: 768px) {
+      .main-nav {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .main-nav a {
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+      }
+      .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .mobile-menu-btn span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #000;
+        margin: 5px 0;
+      }
+    }
+    @media (min-width: 769px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+      .main-nav {
+        display: flex;
+      }
+    }
+  </style>
 </body>
 </html>

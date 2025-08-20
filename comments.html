@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="comments_title">آراء العملاء | كيان الخليج</title>
+  <link rel="icon" href="window_icon_125687.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body lang="ar">
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-right">
+      <span class="top-bar-item"><i class="fa-solid fa-location-dot"></i><span>الرياض، طريق الملك عبدالعزيز</span></span>
+      <span class="top-bar-item"><i class="fa-solid fa-envelope"></i><a href="mailto:info@kayanfactory.com" class="top-bar-link">info@kayanfactory.com</a></span>
+      <span class="top-bar-item"><i class="fa-solid fa-phone"></i><a href="tel:+966545666924" class="top-bar-link">+966545666924</a></span>
+    </div>
+  </div>
+</div>
+<header class="main-header">
+  <div class="container nav-flex">
+    <div class="logo-block">
+      <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
+      <div class="logo-text">
+        <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
+        <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="home">الرئيسية</span></a>
+      <a href="products.html"><i class="fa-solid fa-box"></i> <span data-i18n="products">منتجاتنا</span></a>
+      <a href="projects.html"><i class="fa-solid fa-diagram-project"></i> <span data-i18n="projects">مشاريعنا</span></a>
+      <a href="about.html"><i class="fa-solid fa-users"></i> <span data-i18n="about">من نحن</span></a>
+      <a href="contact.html"><i class="fa-solid fa-phone"></i> <span data-i18n="contact">اتصل بنا</span></a>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="القائمة">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<section class="comments-section">
+  <div class="container">
+    <h1 class="section-title" data-i18n="client_reviews">آراء العملاء</h1>
+    <p data-i18n="comments_desc">نفتخر بثقة عملائنا الكرام. اقرأ آراءهم وتجاربهم معنا</p>
+    <div id="comments-list" class="comments-list" style="margin:1rem 0 2rem;"></div>
+    <div class="comment-form-container">
+      <h2 data-i18n="add_review">أضف رأيك</h2>
+      <form id="comment-form" class="comment-form">
+        <div class="form-group">
+          <label for="name" data-i18n="your_name">اسمك (اختياري)</label>
+          <input type="text" id="name" name="name" placeholder="اسمك">
+        </div>
+        <div class="form-group">
+          <label data-i18n="your_rating">تقييمك</label>
+          <div class="rating-stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comment" data-i18n="write_review">رأيك</label>
+          <textarea id="comment" name="comment" placeholder="اكتب رأيك هنا..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" data-i18n="submit_comment"><i class="fa-solid fa-paper-plane"></i> إرسال</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    .main-nav {
+      display: none;
+      flex-direction: column;
+      background: #fff;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .main-nav a {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .mobile-menu-btn {
+      display: block;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #000;
+      margin: 5px 0;
+    }
+  }
+  @media (min-width: 769px) {
+    .mobile-menu-btn {
+      display: none;
+    }
+    .main-nav {
+      display: flex;
+    }
+  }
+</style>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-col footer-logo-block">
+      <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
+      <div class="logo-text">
+        <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
+        <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title" data-i18n="quick_links">روابط سريعة</div>
+      <ul>
+        <li><a href="index.html" data-i18n="home">الرئيسية</a></li>
+        <li><a href="products.html" data-i18n="products">منتجاتنا</a></li>
+        <li><a href="projects.html" data-i18n="projects">مشاريعنا</a></li>
+        <li><a href="about.html" data-i18n="about">من نحن</a></li>
+        <li><a href="contact.html" data-i18n="contact">اتصل بنا</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title" data-i18n="services">خدماتنا</div>
+      <ul>
+        <li><span data-i18n="service1">كرتن وول وكلادينج</span></li>
+        <li><span data-i18n="service2">نوافذ وأبواب</span></li>
+        <li><span data-i18n="service3">كابائن الدش</span></li>
+        <li><span data-i18n="service4">درابزين ورولر شتر</span></li>
+        <li><span data-i18n="service5">قواطع زجاجية ومطابخ</span></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-socials">
+      <a href="https://www.facebook.com/share/1AiZX5aWux/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://x.com/Kayanalkhalij?t=ju5kCDg-ElJ1n_7MiXtvBw&s=09" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://wa.me/966545666924" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/kayanalkhalij.eng1?igsh=MTVmMGlidWJlOGZlZA==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-i18n="copyright">© 2025 كيان الخليج للصناعة. جميع الحقوق محفوظة.</span>
+    <div>
+      <a href="privacy.html" data-i18n="privacy">سياسة الخصوصية</a>
+      <a href="terms.html" data-i18n="terms">الشروط والأحكام</a>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" class="back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="script.js"></script>
+</body>
+</html>

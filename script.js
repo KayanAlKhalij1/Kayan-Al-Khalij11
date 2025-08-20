@@ -166,19 +166,18 @@ function initializeLanguageSwitcher() {
       langDropdown.style.display = langDropdown.style.display === 'none' ? 'block' : 'none';
     });
 
-    // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
       if (!langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
         langDropdown.style.display = 'none';
       }
     });
 
-    // Language selection
-  langOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      const lang = option.getAttribute('data-lang');
-      setLanguage(lang);
-      langDropdown.style.display = 'none';
+    langOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const lang = option.getAttribute('data-lang');
+        setLanguage(lang);
+        langDropdown.style.display = 'none';
+      });
     });
   }
 }
@@ -192,36 +191,67 @@ function loadAndSetLanguage() {
 // Set language function
 function setLanguage(lang) {
   localStorage.setItem('selectedLanguage', lang);
-  
-  fetch('translations.json')
+  fetch('translations.json', { cache: 'no-store' })
     .then(response => response.json())
     .then(data => {
       const translations = data[lang];
-      
-      // Update all elements with data-i18n attribute
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[key]) {
-          element.textContent = translations[key];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const value = translations && translations[key];
+        if (!value) return;
+
+        // If element has child elements (e.g., icons), preserve them and only replace the text portion
+        if (el.children && el.children.length > 0) {
+          // Remove existing text nodes
+          Array.from(el.childNodes).forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              node.parentNode && node.parentNode.removeChild(node);
+            }
+          });
+          // Find or create a dedicated text span
+          let textSpan = el.querySelector('.i18n-text');
+          if (!textSpan) {
+            textSpan = document.createElement('span');
+            textSpan.className = 'i18n-text';
+            el.appendChild(textSpan);
+          }
+          textSpan.textContent = value;
+        } else {
+          el.textContent = value;
         }
       });
-
-      // Update document direction
-      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       document.documentElement.lang = lang;
-  
-  // Update language button
-  const langToggle = document.getElementById('lang-toggle');
-  if (langToggle) {
-    const flag = lang === 'ar' ? '🇸🇦' : '🇬🇧';
-    const text = lang === 'ar' ? 'العربية' : 'English';
-    langToggle.innerHTML = `<span class="flag">${flag}</span> <span data-i18n="${lang === 'ar' ? 'arabic' : 'english'}">${text}</span>`;
-  }
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     })
-    .catch(error => {
-      console.error('Error loading translations:', error);
-  });
+    .catch(err => console.error('Translation error:', err));
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('selectedLanguage') || 'ar';
+  setLanguage(lang);
+
+  const langToggle = document.getElementById('lang-toggle');
+  const langDropdown = document.getElementById('lang-dropdown');
+  const langOptions = document.querySelectorAll('.lang-option');
+
+  langToggle.addEventListener('click', () => {
+    langDropdown.style.display = langDropdown.style.display === 'none' ? 'block' : 'none';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.style.display = 'none';
+    }
+  });
+
+  langOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const lang = option.getAttribute('data-lang');
+      setLanguage(lang);
+      langDropdown.style.display = 'none';
+    });
+  });
+});
 
 // Initialize scroll animations
 function initializeScrollAnimations() {
@@ -279,12 +309,179 @@ function initializeSmoothScrolling() {
 function initializeMobileMenu() {
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const mainNav = document.querySelector('.main-nav');
+  let menuOverlay = null;
+  
+  console.log('Mobile menu initialization:', { mobileMenuBtn, mainNav });
   
   if (mobileMenuBtn && mainNav) {
+    console.log('Mobile menu elements found, adding event listeners');
+    
+    // Toggle mobile menu
     mobileMenuBtn.addEventListener('click', () => {
+      console.log('Mobile menu button clicked');
+      const willOpen = !mainNav.classList.contains('mobile-active');
       mainNav.classList.toggle('mobile-active');
       mobileMenuBtn.classList.toggle('active');
+      mobileMenuBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      document.body.classList.toggle('menu-open', willOpen);
+      if (willOpen) {
+        if (!menuOverlay) {
+          menuOverlay = createMenuOverlay();
+        }
+        menuOverlay.style.display = 'block';
+        trapFocus(mainNav);
+      } else {
+        if (menuOverlay) menuOverlay.style.display = 'none';
+        releaseFocusTrap();
+      }
+      console.log('Mobile menu toggled:', mainNav.classList.contains('mobile-active'));
     });
+    
+    // Close mobile menu when clicking on any link
+    const navLinks = mainNav.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        console.log('Nav link clicked, closing mobile menu');
+        mainNav.classList.remove('mobile-active');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        if (menuOverlay) menuOverlay.style.display = 'none';
+        releaseFocusTrap();
+      });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mainNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mainNav.classList.remove('mobile-active');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        if (menuOverlay) menuOverlay.style.display = 'none';
+        releaseFocusTrap();
+      }
+    });
+    
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        mainNav.classList.remove('mobile-active');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        if (menuOverlay) menuOverlay.style.display = 'none';
+        releaseFocusTrap();
+      }
+    });
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 901) {
+        mainNav.classList.remove('mobile-active');
+        mobileMenuBtn.classList.remove('active');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+        if (menuOverlay) menuOverlay.style.display = 'none';
+        releaseFocusTrap();
+      }
+    });
+  } else {
+    console.error('Mobile menu elements not found:', { mobileMenuBtn, mainNav });
+  }
+}
+
+// Create overlay behind mobile menu
+function createMenuOverlay() {
+  const overlay = document.createElement('div');
+  overlay.className = 'menu-overlay';
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.addEventListener('click', () => {
+    const mainNav = document.querySelector('.main-nav');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    if (mainNav && mobileMenuBtn) {
+      mainNav.classList.remove('mobile-active');
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+      overlay.style.display = 'none';
+      releaseFocusTrap();
+    }
+  });
+  document.body.appendChild(overlay);
+  return overlay;
+}
+
+// Focus trap helpers for accessibility
+let restoreFocusElement = null;
+function trapFocus(container) {
+  restoreFocusElement = document.activeElement;
+  const focusableSelectors = 'a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])';
+  const focusable = Array.from(container.querySelectorAll(focusableSelectors)).filter(el => !el.hasAttribute('disabled'));
+  if (focusable.length) {
+    focusable[0].focus();
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    function handleTab(e) {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+    container.addEventListener('keydown', handleTab);
+    container.__trapHandler = handleTab;
+  }
+}
+
+function releaseFocusTrap() {
+  const container = document.querySelector('.main-nav');
+  if (container && container.__trapHandler) {
+    container.removeEventListener('keydown', container.__trapHandler);
+    delete container.__trapHandler;
+  }
+  if (restoreFocusElement) {
+    try { restoreFocusElement.focus(); } catch(_) {}
+    restoreFocusElement = null;
+  }
+}
+
+// Inject quick action buttons (WhatsApp and Call) for mobile
+function injectQuickActions() {
+  if (document.querySelector('.quick-actions')) return;
+  const container = document.createElement('div');
+  container.className = 'quick-actions';
+  container.innerHTML = `
+    <a class="qa-btn qa-whatsapp" href="https://wa.me/966545666924" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a class="qa-btn qa-call" href="tel:+966545666924" aria-label="Call"><i class="fa fa-phone"></i></a>
+  `;
+  document.body.appendChild(container);
+}
+
+// Apply native lazy-loading to images that don't have it
+function applyNativeLazyLoading() {
+  document.querySelectorAll('img:not([loading])').forEach(img => {
+    if (!img.classList.contains('hero-bg-img')) {
+      img.setAttribute('loading', 'lazy');
+      img.setAttribute('decoding', 'async');
+    }
+  });
+}
+
+// Ensure there is a main content anchor for skip link
+function ensureMainContentAnchor() {
+  if (!document.getElementById('main-content')) {
+    const anchor = document.createElement('span');
+    anchor.id = 'main-content';
+    const header = document.querySelector('.main-header');
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(anchor, header.nextSibling);
+    } else {
+      document.body.insertBefore(anchor, document.body.firstChild);
+    }
   }
 }
 
@@ -671,94 +868,71 @@ function initializeWebVitals() {
 // Initialize GSAP animations
 function initializeGSAPAnimations() {
   if (typeof gsap !== 'undefined') {
-  // Hero section animations
+    // Hero section animations
     gsap.from('.hero h1', {
       duration: 1,
-    y: 50,
-    opacity: 0,
-    ease: 'power2.out',
+      y: 50,
+      opacity: 0,
+      ease: 'power2.out',
       delay: 0.5
-  });
+    });
 
     gsap.from('.hero p', {
-    duration: 1,
-    y: 30,
-    opacity: 0,
-    ease: 'power2.out',
+      duration: 1,
+      y: 30,
+      opacity: 0,
+      ease: 'power2.out',
       delay: 0.8
-  });
+    });
 
     gsap.from('.hero .btn', {
       duration: 1,
       y: 20,
-    opacity: 0,
+      opacity: 0,
       ease: 'power2.out',
       delay: 1.1
-  });
+    });
 
     // Floating elements animation
     gsap.to('.floating-element', {
       y: -20,
       duration: 2,
       ease: 'power1.inOut',
-    stagger: 0.2,
+      stagger: 0.2,
       repeat: -1,
       yoyo: true
     });
 
-    // Stats counter animation
-    const stats = document.querySelectorAll('.stat-number');
-    stats.forEach((stat, index) => {
-      gsap.from(stat, {
-        duration: 2,
-        textContent: 0,
-        ease: 'power1.out',
-        delay: index * 0.2,
-        snap: { textContent: 1 },
-        onUpdate: function() {
-          stat.textContent = Math.ceil(this.targets()[0].textContent);
-        }
+    // Simple staggered reveals if elements exist
+    if (document.querySelectorAll('.service-card').length) {
+      gsap.from('.service-card', {
+        duration: 0.8,
+        y: 40,
+        opacity: 0,
+        ease: 'power2.out',
+        stagger: 0.15
       });
-  });
-
-    // Service cards animation
-  gsap.from('.service-card', {
-    duration: 0.8,
-    y: 50,
-    opacity: 0,
-    ease: 'power2.out',
-      stagger: 0.2,
-    scrollTrigger: {
-      trigger: '.services-section',
-      start: 'top 80%'
     }
-  });
 
-    // Testimonial cards animation
-  gsap.from('.testimonial-card', {
-    duration: 0.8,
-      y: 50,
-    opacity: 0,
-    ease: 'power2.out',
-      stagger: 0.2,
-    scrollTrigger: {
-      trigger: '.testimonials-section',
-      start: 'top 80%'
+    if (document.querySelectorAll('.testimonial-card').length) {
+      gsap.from('.testimonial-card', {
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        ease: 'power2.out',
+        stagger: 0.2
+      });
     }
-  });
 
-    // CTA section animation
-  gsap.from('.cta-content', {
-    duration: 1,
-    y: 50,
-    opacity: 0,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: '.cta-section',
-      start: 'top 80%'
+    if (document.querySelector('.cta-content')) {
+      gsap.from('.cta-content', {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        ease: 'power2.out'
+      });
     }
-  });
-}
+  }
 }
 
 // Initialize comments system
@@ -892,6 +1066,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeScrollAnimations();
   initializeSmoothScrolling();
   initializeMobileMenu();
+  injectQuickActions();
+  applyNativeLazyLoading();
+  ensureMainContentAnchor();
   showLoadingScreen();
   showCookieBanner();
   initializeContactForm();
@@ -931,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('touchend', (e) => {
     touchEndX = e.changedTouches[0].screenX;
     handleSwipe();
-});
+  });
 
   function handleSwipe() {
     const swipeThreshold = 50;

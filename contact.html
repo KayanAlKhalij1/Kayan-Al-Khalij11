@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>اتصل بنا | كيان الخليج</title>
-  <link rel="icon" href="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" type="image/jpeg">
+  <link rel="icon" href="window_icon_125687.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -95,6 +95,43 @@
         padding: 1.2rem 0.5rem;
       }
     }
+    @media (max-width: 768px) {
+      .main-nav {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .main-nav a {
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+      }
+      .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .mobile-menu-btn span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #000;
+        margin: 5px 0;
+      }
+    }
+    @media (min-width: 769px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+      .main-nav {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body lang="ar">
@@ -131,6 +168,11 @@
         <a href="about.html"><i class="fa-solid fa-users"></i> <span>من نحن</span></a>
         <a href="contact.html" class="active"><i class="fa-solid fa-phone"></i> <span>اتصل بنا</span></a>
       </nav>
+      <button class="mobile-menu-btn" aria-label="القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
   <!-- Contact Section -->

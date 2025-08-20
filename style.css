@@ -108,7 +108,8 @@ body.menu-open {
     gap: 0.25rem;
   }
   /* Hide address to reduce clutter, keep email then phone stacked */
-  .top-bar-right .top-bar-item:nth-child(1) { display: none; }
+  /* keep location visible on phones */
+  .top-bar-right .top-bar-item:nth-child(1) { display: flex; }
   .top-bar-right .top-bar-item:nth-child(2) { order: 1; }
   .top-bar-right .top-bar-item:nth-child(3) { order: 2; }
   .lang-switcher { align-self: flex-end; }
@@ -547,7 +548,8 @@ body.menu-open {
   .main-nav.mobile-active {
     animation: slideInFromRight 0.3s ease-out;
   }
-  .menu-overlay { display: block; }
+  /* overlay visibility is controlled via JS to avoid blocking clicks */
+  .menu-overlay { display: none; }
 
   /* Dark overlay behind the menu for visual separation */
   .menu-overlay {
@@ -1152,7 +1154,7 @@ body.menu-open {
 }
 
 .carousel-section .carousel {
-  height: 400px;
+  height: clamp(220px, 45vh, 400px);
   position: relative;
   overflow: hidden;
 }
@@ -1169,7 +1171,7 @@ body.menu-open {
 
 @media (max-width: 600px) {
   .carousel-section .carousel {
-    height: 250px;
+    height: clamp(200px, 38vh, 260px);
   }
   
   .carousel-section .carousel img {

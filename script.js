@@ -144,7 +144,7 @@ function initializeCarousel() {
   carousel.addEventListener('mouseleave', startAutoPlay);
 
   // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowLeft') {
       prevImage();
       resetAutoPlay();
@@ -190,8 +190,8 @@ function initializeLanguageSwitcher() {
 
 // Load and set language
 function loadAndSetLanguage() {
-  const savedLang = localStorage.getItem('selectedLanguage') || 'ar';
-      setLanguage(savedLang);
+  const savedLang = localStorage.getItem('selectedLanguage') || (document.documentElement.lang || 'ar');
+  setLanguage(savedLang);
 }
 
 // Set language function
@@ -441,8 +441,8 @@ function injectQuickActions() {
   const container = document.createElement('div');
   container.className = 'quick-actions';
   container.innerHTML = `
-    <a class="qa-btn qa-whatsapp" href="https://wa.me/966545666924" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a class="qa-btn qa-call" href="tel:+966545666924" aria-label="Call"><i class="fa fa-phone"></i></a>
+    <a class="qa-btn qa-whatsapp" href="https://wa.me/966545666924" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i><span class="sr-only">WhatsApp</span></a>
+    <a class="qa-btn qa-call" href="tel:+966545666924" aria-label="Call"><i class="fa fa-phone"></i><span class="sr-only">Call</span></a>
   `;
   document.body.appendChild(container);
 }
@@ -463,12 +463,24 @@ function ensureMainContentAnchor() {
     const anchor = document.createElement('span');
     anchor.id = 'main-content';
     const header = document.querySelector('.main-header');
-    if (header && header.parentNode) {
-      header.parentNode.insertBefore(anchor, header.nextSibling);
-    } else {
-      document.body.insertBefore(anchor, document.body.firstChild);
-    }
+    var targetParent = (header && header.parentNode) ? header.parentNode : document.body;
+    var referenceNode = header ? header.nextSibling : document.body.firstChild;
+    targetParent.insertBefore(anchor, referenceNode);
   }
+}
+
+// Ensure Font Awesome is present (robust fallback for non-Chromium browsers or CDN hiccups)
+function ensureFontAwesome() {
+  var hasFAClass = document.querySelector('i.fa, i.fas, i.far, i.fab');
+  var hasFALink = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).some(function(l){ return (l.href||'').indexOf('font-awesome') !== -1 || (l.href||'').indexOf('fontawesome') !== -1; });
+  if (!hasFAClass) return; // no icons used
+  if (hasFALink) return;   // stylesheet already present
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+  link.crossOrigin = 'anonymous';
+  link.referrerPolicy = 'no-referrer';
+  document.head.appendChild(link);
 }
 
 // Show loading screen
@@ -1046,6 +1058,7 @@ function formatDate(dateString) {
 // Initialize all functions when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
+  ensureFontAwesome();
   initializeCarousel();
   initializeLanguageSwitcher();
   loadAndSetLanguage();
@@ -1104,11 +1117,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const carousel = document.getElementById('carousel');
       if (carousel && carousel.offsetParent !== null) {
         if (diff > 0) {
-          // Swipe left - next image
-          document.getElementById('next')?.click();
+          var nextEl = document.getElementById('next');
+          if (nextEl) nextEl.click();
         } else {
-          // Swipe right - previous image
-          document.getElementById('prev')?.click();
+          var prevEl = document.getElementById('prev');
+          if (prevEl) prevEl.click();
         }
       }
     }

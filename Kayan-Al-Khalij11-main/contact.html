@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اتصل بنا | كيان الخليج</title>
+  <link rel="icon" href="window_icon_125687.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <style>
+    .contact-section {
+      padding: 4rem 0;
+      background: var(--bg-primary);
+      min-height: 80vh;
+    }
+    .contact-form-wrapper {
+      background: var(--bg-secondary);
+      max-width: 420px;
+      margin: 2rem auto;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-medium);
+      padding: 2.5rem 2rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .contact-form-title {
+      color: var(--primary-color);
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .contact-form-desc {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .contact-form label {
+      display: block;
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius);
+      margin-bottom: 1.2rem;
+      font-family: inherit;
+      font-size: 1rem;
+      background: var(--bg-primary);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px #1565c033;
+      outline: none;
+      background: #fff;
+    }
+    .contact-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+    .contact-form button {
+      background: linear-gradient(135deg, var(--secondary-color) 0%, #ffd54f 100%);
+      color: var(--primary-color);
+      border: none;
+      border-radius: var(--border-radius);
+      padding: 1rem 2.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-light);
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .contact-form button:hover {
+      background: linear-gradient(135deg, #ffd54f 0%, var(--secondary-color) 100%);
+      color: var(--primary-color);
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: var(--shadow-medium);
+    }
+    @media (max-width: 600px) {
+      .contact-form-wrapper {
+        padding: 1.2rem 0.5rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .main-nav {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .main-nav a {
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+      }
+      .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      .mobile-menu-btn span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #000;
+        margin: 5px 0;
+      }
+    }
+    @media (min-width: 769px) {
+      .mobile-menu-btn {
+        display: none;
+      }
+      .main-nav {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body lang="ar">
+  <!-- Top Bar & Header -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-right">
+        <span class="top-bar-item"><i class="fa-solid fa-location-dot"></i><span data-i18n="address">الرياض، طريق الملك عبدالعزيز</span></span>
+        <span class="top-bar-item"><i class="fa-solid fa-envelope"></i><a href="mailto:info@kayanfactory.com" class="top-bar-link" data-i18n="email">info@kayanfactory.com</a></span>
+        <span class="top-bar-item"><i class="fa-solid fa-phone"></i><a href="tel:+966545666924" class="top-bar-link" data-i18n="phone">+966545666924</a></span>
+      </div>
+      <div class="top-bar-socials">
+        <a href="https://www.facebook.com/share/1AiZX5aWux/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/Kayanalkhalij?t=ju5kCDg-ElJ1n_7MiXtvBw&s=09" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/kayanalkhalij.eng1?igsh=MTVmMGlidWJlOGZlZA==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/966545666924" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <div class="lang-switcher">
+        <button id="lang-toggle" class="lang-btn" type="button"><span class="flag">🇸🇦</span> <span data-i18n="arabic">العربية</span></button>
+        <div id="lang-dropdown" class="lang-dropdown" style="display:none;">
+          <button data-lang="ar" class="lang-option"><span class="flag">🇸🇦</span> <span data-i18n="arabic">العربية</span></button>
+          <button data-lang="en" class="lang-option"><span class="flag">🇬🇧</span> <span data-i18n="english">English</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header class="main-header">
+    <div class="container nav-flex">
+      <div class="logo-block">
+        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
+        <div class="logo-text">
+          <div class="logo-title">كيان الخليج للصناعة</div>
+          <div class="logo-sub">Kayan Alkhalij Manufacturing</div>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" data-i18n="home"><i class="fa-solid fa-house"></i> الرئيسية</a>
+        <a href="products.html" data-i18n="products"><i class="fa-solid fa-box"></i> منتجاتنا</a>
+        <a href="projects.html" data-i18n="projects"><i class="fa-solid fa-diagram-project"></i> مشاريعنا</a>
+        <a href="about.html" data-i18n="about"><i class="fa-solid fa-users"></i> من نحن</a>
+        <a href="contact.html" class="active" data-i18n="contact"><i class="fa-solid fa-phone"></i> اتصل بنا</a>
+      </nav>
+      <button class="mobile-menu-btn" aria-label="القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-content" style="display:flex;gap:2.5rem;align-items:flex-start;justify-content:center;flex-wrap:wrap;">
+      <div style="flex:1;min-width:260px;max-width:420px;">
+        <div class="contact-form-title" data-i18n="contact">اتصل بنا</div>
+        <div class="contact-form-desc" data-i18n="contact_desc">نحن هنا لمساعدتك في تحقيق رؤيتك المعمارية. تواصل معنا للحصول على استشارة مجانية.</div>
+        <form class="contact-form" action="https://formspree.io/f/mpwlqgno" method="POST">
+          <label for="name" data-i18n="full_name">الاسم الكامل</label>
+          <input type="text" id="name" name="name" placeholder="اكتب اسمك الكامل" required>
+          <label for="email">البريد الإلكتروني</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required>
+          <label for="phone">رقم الهاتف</label>
+          <input type="text" id="phone" name="phone" placeholder="05xxxxxxxx" required>
+          <label for="message" data-i18n="your_message">رسالتك</label>
+          <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
+          <button type="submit" data-i18n="send_message"><i class="fa-solid fa-paper-plane"></i> إرسال</button>
+        </form>
+      </div>
+      <div class="contact-company-info" style="flex:1;min-width:260px;max-width:370px;display:flex;flex-direction:column;gap:1.2rem;align-items:flex-start;justify-content:flex-start;background:var(--bg-primary);border-radius:12px;box-shadow:0 2px 12px #e0e0e0;padding:2rem 1.5rem;margin-top:0;">
+        <div style="font-size:1.08rem;display:flex;align-items:center;gap:8px;">
+          <i class="fa-solid fa-envelope" style="color:#1565c0;"></i>
+          <b>البريد الإلكتروني:</b>
+        </div>
+        <a href="mailto:info@kayanfactory.com" style="color:#1565c0;text-decoration:underline;margin-right:28px;word-break:break-all;">info@kayanfactory.com</a>
+        <div style="font-size:1.08rem;display:flex;align-items:center;gap:8px;">
+          <i class="fa-solid fa-phone" style="color:#1565c0;"></i>
+          <b>رقم الشركة:</b>
+        </div>
+        <a href="tel:+966545666924" style="color:#1565c0;text-decoration:underline;margin-right:28px;">966545666924+</a>
+        <div style="font-size:1.08rem;display:flex;align-items:center;gap:8px;">
+          <i class="fa-solid fa-clock" style="color:#1565c0;"></i>
+          <b>ساعات العمل:</b>
+        </div>
+        <div style="margin-right:28px;line-height:1.7;">
+          السبت - الخميس: 8:00 ص - 6:00 م<br>
+          الجمعة: مغلق
+        </div>
+        <div style="font-size:1.08rem;display:flex;align-items:center;gap:8px;">
+          <i class="fa-solid fa-globe" style="color:#1565c0;"></i>
+          <b>الموقع الإلكتروني:</b>
+        </div>
+        <a href="https://kayanfactory.com" target="_blank" style="color:#1565c0;text-decoration:underline;margin-right:28px;">kayanfactory.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col footer-logo-block">
+        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
+        <div class="logo-text">
+          <div class="logo-title">كيان الخليج للصناعة</div>
+          <div class="logo-sub">Kayan Alkhalij Manufacturing</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title" data-i18n="quick_links">روابط سريعة</div>
+        <ul>
+          <li><a href="index.html" data-i18n="home">الرئيسية</a></li>
+          <li><a href="products.html" data-i18n="products">منتجاتنا</a></li>
+          <li><a href="about.html" data-i18n="about">من نحن</a></li>
+          <li><a href="contact.html" data-i18n="contact">اتصل بنا</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title" data-i18n="services">خدماتنا</div>
+        <ul>
+          <li><span data-i18n="service1">كرتن وول وكلادينج</span></li>
+          <li><span data-i18n="service2">نوافذ وأبواب</span></li>
+          <li><span data-i18n="service3">كابائن الدش</span></li>
+          <li><span data-i18n="service4">درابزين ورولر شتر</span></li>
+          <li><span data-i18n="service5">قواطع زجاجية ومطابخ</span></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-socials">
+        <a href="https://www.facebook.com/share/1AiZX5aWux/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/Kayanalkhalij?t=ju5kCDg-ElJ1n_7MiXtvBw&s=09" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/966545666924" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/kayanalkhalij.eng1?igsh=MTVmMGlidWJlOGZlZA==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="copyright">© 2025 كيان الخليج للصناعة. جميع الحقوق محفوظة.</span>
+      <div>
+        <a href="privacy.html" data-i18n="privacy">سياسة الخصوصية</a>
+        <a href="terms.html" data-i18n="terms">الشروط والأحكام</a>
+      </div>
+    </div>
+  </footer>
+  <button id="back-to-top" class="back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -166,7 +166,7 @@
       </div>
     </div>
   </div>
-  <!-- Header -->
+  <!-- Enhanced Header -->
   <header class="main-header">
     <div class="container nav-flex">
       <div class="logo-block">
@@ -176,29 +176,110 @@
           <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
         </div>
       </div>
+      
       <nav id="main-nav" class="main-nav">
-        <a href="index.html" data-i18n="home"><i class="fa fa-home"></i> الرئيسية</a>
-        <a href="products.html" data-i18n="products"><i class="fa fa-box"></i> منتجاتنا</a>
-        <a href="projects.html" data-i18n="projects"><i class="fa fa-diagram-project"></i> مشاريعنا</a>
-        <a href="about.html" data-i18n="about"><i class="fa fa-users"></i> من نحن</a>
-        <a href="contact.html" data-i18n="contact"><i class="fa fa-phone"></i> اتصل بنا</a>
+        <a href="index.html" data-i18n="home" class="nav-link active">
+          <i class="fa fa-home"></i> 
+          <span>الرئيسية</span>
+        </a>
+        
+        <a href="products.html" data-i18n="products" class="nav-link">
+          <i class="fa fa-box"></i> 
+          <span>منتجاتنا</span>
+        </a>
+        
+        <a href="projects.html" data-i18n="projects" class="nav-link">
+          <i class="fa fa-diagram-project"></i> 
+          <span>مشاريعنا</span>
+        </a>
+        
+        <a href="about.html" data-i18n="about" class="nav-link">
+          <i class="fa fa-users"></i> 
+          <span>من نحن</span>
+        </a>
+        
+        <a href="contact.html" data-i18n="contact" class="nav-link">
+          <i class="fa fa-phone"></i> 
+          <span>اتصل بنا</span>
+        </a>
       </nav>
-      <button class="mobile-menu-btn" aria-label="القائمة" aria-expanded="false" aria-controls="main-nav">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      
+      <div class="header-actions">
+        <div class="header-contact">
+          <a href="tel:+966545666924" class="contact-btn">
+            <i class="fa fa-phone"></i>
+            <span>+966545666924</span>
+          </a>
+        </div>
+        <div class="language-switcher">
+          <button id="lang-switcher" class="lang-btn">
+            <i class="fa fa-globe"></i>
+            <span id="current-lang">العربية</span>
+          </button>
+        </div>
+        <button class="mobile-menu-btn" aria-label="القائمة" aria-expanded="false" aria-controls="main-nav">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
   
-  <!-- Hero -->
+  <!-- Enhanced Hero -->
   <section class="hero">
-    <img src="WhatsApp Image 2025-07-31 at 12.35.10_3ca7ce88.jpg" alt="خلفية كيان الخليج" class="hero-bg-img" loading="eager">
-    <div class="hero-content" data-aos="fade-up">
-      <h1 data-i18n="hero_title">كيان الخليج للصناعة</h1>
-      <p data-i18n="hero_subtitle">رؤية هندسية متطورة</p>
-      <a href="products.html" class="btn btn-primary" data-i18n="browse_products"><i class="fa-solid fa-arrow-left"></i> تصفح منتجاتنا</a>
+    <div class="hero-bg">
+      <img src="WhatsApp Image 2025-07-31 at 12.35.10_3ca7ce88.jpg" alt="خلفية كيان الخليج" class="hero-bg-img" loading="eager">
+      <div class="hero-overlay"></div>
     </div>
+    <div class="hero-content" data-aos="fade-up">
+      <div class="hero-badge" data-aos="fade-up" data-aos-delay="100">
+        <i class="fa fa-award"></i>
+        <span>شركة معتمدة ومرخصة</span>
+      </div>
+      <h1 data-aos="fade-up" data-aos-delay="200">
+        <span class="hero-title-main">كيان الخليج للصناعة</span>
+        <span class="hero-title-sub">رؤية هندسية متطورة</span>
+      </h1>
+      <p class="hero-description" data-aos="fade-up" data-aos-delay="300">
+        نحن متخصصون في تصنيع وتركيب الكرتن وول والكلادينج والنوافذ والأبواب الألمنيوم بأعلى معايير الجودة العالمية
+      </p>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+        <div class="stat-item">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">سنة خبرة</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">مشروع مكتمل</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">رضا العملاء</span>
+        </div>
+      </div>
+      <div class="hero-buttons" data-aos="fade-up" data-aos-delay="500">
+        <a href="products.html" class="btn btn-primary">
+          <i class="fa fa-box"></i> 
+          <span>تصفح منتجاتنا</span>
+        </a>
+        <a href="contact.html" class="btn btn-secondary">
+          <i class="fa fa-phone"></i> 
+          <span>اتصل بنا</span>
+        </a>
+        <a href="projects.html" class="btn btn-outline">
+          <i class="fa fa-images"></i> 
+          <span>شاهد أعمالنا</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator" data-aos="fade-up" data-aos-delay="600">
+      <div class="scroll-arrow">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+      <span>اكتشف المزيد</span>
+    </div>
+  </section>
     <!-- Start: Product Quick Cards -->
     <div class="product-quick-cards container" style="margin-top: 1.5rem;">
       <div class="product-cards-grid" style="display: flex; gap: 1.5rem; justify-content: center; align-items: stretch;">
@@ -283,15 +364,55 @@
       </div>
     </div>
   </section>
-  <!-- Gallery -->
+  <!-- Enhanced Gallery -->
   <section class="gallery-section">
     <div class="container">
-      <h2 class="section-title" data-i18n="our_gallery">معرض أعمالنا</h2>
-      <div class="carousel-section">
+      <h2 class="section-title" data-aos="fade-up"><i class="fa fa-images"></i> معرض أعمالنا</h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="50">اكتشف جودة أعمالنا من خلال معرض الصور التفاعلي</p>
+      
+      <div class="carousel-section" data-aos="fade-up" data-aos-delay="100">
         <div class="carousel-wrapper">
-          <div id="carousel" class="carousel"></div>
-          <button id="prev" class="carousel-btn"><i class="fa-solid fa-chevron-right"></i></button>
-          <button id="next" class="carousel-btn"><i class="fa-solid fa-chevron-left"></i></button>
+          <div id="carousel" class="carousel">
+            <!-- Images will be loaded dynamically -->
+          </div>
+          
+          <!-- Enhanced Navigation -->
+          <button id="prev" class="carousel-btn prev" aria-label="الصورة السابقة">
+            <i class="fa-solid fa-chevron-right"></i>
+            <span class="btn-tooltip">السابق</span>
+          </button>
+          <button id="next" class="carousel-btn next" aria-label="الصورة التالية">
+            <i class="fa-solid fa-chevron-left"></i>
+            <span class="btn-tooltip">التالي</span>
+          </button>
+          
+          <!-- Carousel Info -->
+          <div class="carousel-info">
+            <div class="carousel-counter">
+              <span id="current-slide">1</span> / <span id="total-slides">0</span>
+            </div>
+            <div class="carousel-title" id="carousel-title">معرض أعمالنا</div>
+          </div>
+          
+          <!-- Auto-play Controls -->
+          <div class="carousel-controls">
+            <button class="control-btn" id="play-pause" aria-label="تشغيل/إيقاف التمرير التلقائي">
+              <i class="fa fa-pause" id="play-pause-icon"></i>
+            </button>
+            <button class="control-btn" id="fullscreen" aria-label="عرض كامل">
+              <i class="fa fa-expand"></i>
+            </button>
+          </div>
+          
+          <!-- Indicators -->
+          <div class="carousel-indicators" id="carousel-indicators">
+            <!-- Indicators will be generated dynamically -->
+          </div>
+        </div>
+        
+        <!-- Thumbnail Navigation -->
+        <div class="carousel-thumbnails" id="carousel-thumbnails">
+          <!-- Thumbnails will be generated dynamically -->
         </div>
       </div>
     </div>
@@ -317,6 +438,15 @@
           <div style="padding:1rem;">
             <h3 style="margin:0 0 0.5rem 0;">واجهة زجاجية لمبنى إداري</h3>
             <p style="font-size:0.95rem; color:#555;">تنفيذ واجهة كرتن وول وزجاج لمبنى إداري في الرياض.</p>
+            <div class="project-progress">
+              <div class="progress-label">
+                <span>تقدم المشروع</span>
+                <span class="progress-percentage">85%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%;"></div>
+              </div>
+            </div>
             <a href="projects-aluminum-glass.html" class="btn btn-secondary" style="margin-top:0.5rem;"><i class="fa fa-arrow-left"></i> تفاصيل المشروع</a>
           </div>
         </div>
@@ -325,6 +455,15 @@
           <div style="padding:1rem;">
             <h3 style="margin:0 0 0.5rem 0;">كلادينج لمجمع تجاري</h3>
             <p style="font-size:0.95rem; color:#555;">تصميم وتنفيذ كلادينج خارجي لمجمع تجاري حديث.</p>
+            <div class="project-progress">
+              <div class="progress-label">
+                <span>تقدم المشروع</span>
+                <span class="progress-percentage">100%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%;"></div>
+              </div>
+            </div>
             <a href="projects-cladding.html" class="btn btn-secondary" style="margin-top:0.5rem;"><i class="fa fa-arrow-left"></i> تفاصيل المشروع</a>
           </div>
         </div>
@@ -333,12 +472,132 @@
           <div style="padding:1rem;">
             <h3 style="margin:0 0 0.5rem 0;">أبواب ونوافذ UPVC</h3>
             <p style="font-size:0.95rem; color:#555;">تركيب أبواب ونوافذ UPVC في فيلا سكنية.</p>
+            <div class="project-progress">
+              <div class="progress-label">
+                <span>تقدم المشروع</span>
+                <span class="progress-percentage">60%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%;"></div>
+              </div>
+            </div>
             <a href="projects-upvc-windows.html" class="btn btn-secondary" style="margin-top:0.5rem;"><i class="fa fa-arrow-left"></i> تفاصيل المشروع</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <!-- Blog Section -->
+  <section class="blog-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up"><i class="fa-solid fa-newspaper"></i> مدونة كيان الخليج</h2>
+      <div class="blog-grid">
+        <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="blog-image">
+            <img src="smart-aluminium-windows-1024x683-1-1000x570.png" alt="مزايا النوافذ الألمنيوم">
+            <div class="blog-category">تقنية</div>
+          </div>
+          <div class="blog-content">
+            <h3>مزايا النوافذ الألمنيوم في المنازل الحديثة</h3>
+            <p>اكتشف الفوائد العديدة للنوافذ الألمنيوم من حيث العزل الحراري والصوتي والمتانة...</p>
+            <div class="blog-meta">
+              <span class="blog-date"><i class="fa-solid fa-calendar"></i> 15 يناير 2025</span>
+              <span class="blog-read-time"><i class="fa-solid fa-clock"></i> 5 دقائق قراءة</span>
+            </div>
+            <a href="#" class="blog-read-more">اقرأ المزيد <i class="fa-solid fa-arrow-left"></i></a>
+          </div>
+        </article>
+        
+        <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="blog-image">
+            <img src="9919016-1171360793.jpg" alt="أنواع الكلادينج">
+            <div class="blog-category">تصميم</div>
+          </div>
+          <div class="blog-content">
+            <h3>دليل شامل لأنواع الكلادينج الخارجي</h3>
+            <p>تعرف على أنواع الكلادينج المختلفة وأفضل الخامات المستخدمة في الواجهات الخارجية...</p>
+            <div class="blog-meta">
+              <span class="blog-date"><i class="fa-solid fa-calendar"></i> 12 يناير 2025</span>
+              <span class="blog-read-time"><i class="fa-solid fa-clock"></i> 7 دقائق قراءة</span>
+            </div>
+            <a href="#" class="blog-read-more">اقرأ المزيد <i class="fa-solid fa-arrow-left"></i></a>
+          </div>
+        </article>
+        
+        <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="blog-image">
+            <img src="sasa6.jpg" alt="صيانة النوافذ">
+            <div class="blog-category">صيانة</div>
+          </div>
+          <div class="blog-content">
+            <h3>نصائح مهمة لصيانة النوافذ والأبواب</h3>
+            <p>تعلم كيفية العناية بنوافذ وأبواب منزلك لضمان عمر أطول وأداء أفضل...</p>
+            <div class="blog-meta">
+              <span class="blog-date"><i class="fa-solid fa-calendar"></i> 10 يناير 2025</span>
+              <span class="blog-read-time"><i class="fa-solid fa-clock"></i> 4 دقائق قراءة</span>
+            </div>
+            <a href="#" class="blog-read-more">اقرأ المزيد <i class="fa-solid fa-arrow-left"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Form Section -->
+  <section class="testimonials-form-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up"><i class="fa-solid fa-star"></i> شاركنا تجربتك</h2>
+      <div class="testimonial-form-container" data-aos="fade-up" data-aos-delay="100">
+        <form id="testimonial-form" class="testimonial-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="testimonial-name">الاسم:</label>
+              <input type="text" id="testimonial-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="testimonial-email">البريد الإلكتروني:</label>
+              <input type="email" id="testimonial-email" name="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="testimonial-service">نوع الخدمة:</label>
+            <select id="testimonial-service" name="service" required>
+              <option value="">اختر الخدمة</option>
+              <option value="curtain-wall">كرتن وول</option>
+              <option value="cladding">كلادينج</option>
+              <option value="aluminum-windows">نوافذ ألمنيوم</option>
+              <option value="upvc-windows">نوافذ UPVC</option>
+              <option value="wpc-doors">أبواب WPC</option>
+              <option value="other">أخرى</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>التقييم:</label>
+            <div class="rating-stars">
+              <input type="radio" id="star5" name="rating" value="5">
+              <label for="star5" class="star"><i class="fa-solid fa-star"></i></label>
+              <input type="radio" id="star4" name="rating" value="4">
+              <label for="star4" class="star"><i class="fa-solid fa-star"></i></label>
+              <input type="radio" id="star3" name="rating" value="3">
+              <label for="star3" class="star"><i class="fa-solid fa-star"></i></label>
+              <input type="radio" id="star2" name="rating" value="2">
+              <label for="star2" class="star"><i class="fa-solid fa-star"></i></label>
+              <input type="radio" id="star1" name="rating" value="1">
+              <label for="star1" class="star"><i class="fa-solid fa-star"></i></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="testimonial-message">رسالتك:</label>
+            <textarea id="testimonial-message" name="message" rows="4" placeholder="شاركنا تجربتك مع خدماتنا..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-paper-plane"></i> إرسال التقييم
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
     <div class="container">
@@ -352,53 +611,190 @@
       </div>
     </div>
   </section>
-  <!-- Footer -->
+  <!-- Enhanced Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <div class="footer-col footer-logo-block">
-        <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
-        <div class="logo-text">
-          <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
-          <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
+      <div class="footer-main">
+        <div class="footer-col footer-logo-block">
+          <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
+          <div class="logo-text">
+            <div class="logo-title" data-i18n="company_name">كيان الخليج للصناعة</div>
+            <div class="logo-sub" data-i18n="company_name_en">Kayan Alkhalij Manufacturing</div>
+            <p class="footer-description">رؤية هندسية متطورة في مجال الكرتن وول والكلادينج والنوافذ والأبواب الألمنيوم</p>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <div class="footer-title">روابط سريعة</div>
+          <ul>
+            <li><a href="index.html"><i class="fa fa-home"></i> الرئيسية</a></li>
+            <li><a href="products.html"><i class="fa fa-box"></i> منتجاتنا</a></li>
+            <li><a href="projects.html"><i class="fa fa-diagram-project"></i> مشاريعنا</a></li>
+            <li><a href="about.html"><i class="fa fa-users"></i> من نحن</a></li>
+            <li><a href="contact.html"><i class="fa fa-phone"></i> اتصل بنا</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <div class="footer-title">خدماتنا</div>
+          <ul>
+            <li><a href="projects-aluminum-glass.html"><i class="fa fa-building"></i> كرتن وول وكلادينج</a></li>
+            <li><a href="projects-upvc-windows.html"><i class="fa fa-window-maximize"></i> نوافذ وأبواب</a></li>
+            <li><a href="products.html"><i class="fa fa-shower"></i> كابائن الدش</a></li>
+            <li><a href="products.html"><i class="fa fa-stairs"></i> درابزين ورولر شتر</a></li>
+            <li><a href="products.html"><i class="fa fa-glass"></i> قواطع زجاجية ومطابخ</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <div class="footer-title">معلومات التواصل</div>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fa fa-map-marker-alt"></i>
+              <div>
+                <strong>العنوان</strong>
+                <p>الرياض، طريق الملك عبدالعزيز</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fa fa-phone"></i>
+              <div>
+                <strong>الهاتف</strong>
+                <p><a href="tel:+966545666924">+966545666924</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fa fa-envelope"></i>
+              <div>
+                <strong>البريد الإلكتروني</strong>
+                <p><a href="mailto:info@kayanfactory.com">info@kayanfactory.com</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fa fa-clock"></i>
+              <div>
+                <strong>ساعات العمل</strong>
+                <p>السبت - الخميس: 8:00 ص - 6:00 م</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="footer-col">
-        <div class="footer-title" data-i18n="quick_links">روابط سريعة</div>
-        <ul>
-          <li><a href="index.html" data-i18n="home"><i class="fa fa-home"></i> الرئيسية</a></li>
-          <li><a href="products.html" data-i18n="products"><i class="fa fa-box"></i> منتجاتنا</a></li>
-          <li><a href="projects.html" data-i18n="projects"><i class="fa fa-diagram-project"></i> مشاريعنا</a></li>
-          <li><a href="about.html" data-i18n="about"><i class="fa fa-users"></i> من نحن</a></li>
-          <li><a href="contact.html" data-i18n="contact"><i class="fa fa-phone"></i> اتصل بنا</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-title" data-i18n="services">خدماتنا</div>
-        <ul>
-          <li><span data-i18n="service1">كرتن وول وكلادينج</span></li>
-          <li><span data-i18n="service2">نوافذ وأبواب</span></li>
-          <li><span data-i18n="service3">كابائن الدش</span></li>
-          <li><span data-i18n="service4">درابزين ورولر شتر</span></li>
-          <li><span data-i18n="service5">قواطع زجاجية ومطابخ</span></li>
-        </ul>
-      </div>
-      <div class="footer-col footer-socials">
-        <a href="https://www.facebook.com/share/1AiZX5aWux/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://x.com/Kayanalkhalij?t=ju5kCDg-ElJ1n_7MiXtvBw&s=09" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://wa.me/966545666924" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.instagram.com/kayanalkhalij.eng1?igsh=MTVmMGlidWJlOGZlZA==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      
+      <div class="footer-socials-section">
+        <div class="footer-title">تابعنا على</div>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/share/1AiZX5aWux/" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="https://x.com/Kayanalkhalij?t=ju5kCDg-ElJ1n_7MiXtvBw&s=09" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+            <span>Twitter</span>
+          </a>
+          <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener">
+            <i class="fab fa-linkedin-in"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://wa.me/966545666924" target="_blank" rel="noopener">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://www.instagram.com/kayanalkhalij.eng1?igsh=MTVmMGlidWJlOGZlZA==" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+          </a>
+        </div>
       </div>
     </div>
+    
     <div class="footer-bottom">
-      <span data-i18n="copyright">© 2025 كيان الخليج للصناعة. جميع الحقوق محفوظة.</span>
-      <div>
-        <a href="privacy.html" data-i18n="privacy">سياسة الخصوصية</a>
-        <a href="terms.html" data-i18n="terms">الشروط والأحكام</a>
+      <div class="footer-bottom-content">
+        <div class="copyright">
+          <span>© 2025 كيان الخليج للصناعة. جميع الحقوق محفوظة.</span>
+        </div>
+        <div class="footer-links">
+          <a href="privacy.html">سياسة الخصوصية</a>
+          <a href="terms.html">الشروط والأحكام</a>
+          <a href="sitemap.xml">خريطة الموقع</a>
+        </div>
       </div>
     </div>
   </footer>
   <button id="back-to-top" class="back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+  
+  <!-- WhatsApp Chat Widget -->
+  <div id="whatsapp-widget" class="whatsapp-widget">
+    <div class="whatsapp-header">
+      <div class="whatsapp-avatar">
+        <img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="كيان الخليج">
+      </div>
+      <div class="whatsapp-info">
+        <h4>كيان الخليج للصناعة</h4>
+        <span class="status">متصل الآن</span>
+      </div>
+      <button class="whatsapp-close" id="whatsapp-close">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+    <div class="whatsapp-messages" id="whatsapp-messages">
+      <div class="message received">
+        <p>مرحباً! كيف يمكنني مساعدتك اليوم؟</p>
+        <span class="time">الآن</span>
+      </div>
+    </div>
+    <div class="whatsapp-quick-messages">
+      <button class="quick-msg" data-message="أريد استشارة حول الكرتن وول">استشارة كرتن وول</button>
+      <button class="quick-msg" data-message="أريد عرض سعر للمشروع">عرض سعر</button>
+      <button class="quick-msg" data-message="متى يمكنني الحصول على موعد؟">حجز موعد</button>
+    </div>
+    <div class="whatsapp-input">
+      <input type="text" id="whatsapp-input" placeholder="اكتب رسالتك...">
+      <button id="whatsapp-send">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- WhatsApp Toggle Button -->
+  <button id="whatsapp-toggle" class="whatsapp-toggle">
+    <i class="fab fa-whatsapp"></i>
+    <span class="notification-badge">1</span>
+  </button>
+  
+  <!-- Search Overlay -->
+  <div id="search-overlay" class="search-overlay">
+    <div class="search-container">
+      <div class="search-header">
+        <h3>البحث في الموقع</h3>
+        <button id="search-close" class="search-close">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+      <div class="search-input-container">
+        <input type="text" id="search-input" placeholder="ابحث عن المنتجات، المشاريع، الخدمات...">
+        <button id="search-btn">
+          <i class="fa-solid fa-search"></i>
+        </button>
+      </div>
+      <div class="search-results" id="search-results">
+        <!-- Search results will be populated here -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Search Toggle Button -->
+  <button id="search-toggle" class="search-toggle">
+    <i class="fa-solid fa-search"></i>
+  </button>
+  
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" class="dark-mode-toggle">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+  
+  
+  
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
   

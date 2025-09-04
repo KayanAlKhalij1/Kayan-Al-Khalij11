@@ -1012,6 +1012,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeWebVitals();
   initializeGSAPAnimations();
   initializeCommentsSystem();
+  
+  // Initialize new features
+  initializeWhatsAppWidget();
+  initializeSearch();
+  initializeDarkMode();
+  initializeTestimonialsForm();
+  fixMobileMenu();
 
   // Add keyboard navigation support
   document.addEventListener('keydown', (e) => {
@@ -1100,5 +1107,413 @@ window.KayanWebsite = {
   initializeCarousel,
   initializeCommentsSystem
 };
+
+// WhatsApp Chat Widget Functionality
+function initializeWhatsAppWidget() {
+  const whatsappToggle = document.getElementById('whatsapp-toggle');
+  const whatsappWidget = document.getElementById('whatsapp-widget');
+  const whatsappClose = document.getElementById('whatsapp-close');
+  const whatsappInput = document.getElementById('whatsapp-input');
+  const whatsappSend = document.getElementById('whatsapp-send');
+  const whatsappMessages = document.getElementById('whatsapp-messages');
+  const quickMessages = document.querySelectorAll('.quick-msg');
+
+  if (!whatsappToggle || !whatsappWidget) return;
+
+  // Toggle WhatsApp widget
+  whatsappToggle.addEventListener('click', () => {
+    whatsappWidget.classList.toggle('show');
+    if (whatsappWidget.classList.contains('show')) {
+      whatsappInput.focus();
+    }
+  });
+
+  // Close WhatsApp widget
+  whatsappClose.addEventListener('click', () => {
+    whatsappWidget.classList.remove('show');
+  });
+
+  // Enhanced AI-powered response system
+  function generateAIResponse(userMessage) {
+    const message = userMessage.toLowerCase();
+    
+    // Service-related responses
+    if (message.includes('كرتن وول') || message.includes('curtain wall') || message.includes('واجهات')) {
+      return {
+        text: "🏢 ممتاز! نحن متخصصون في تصنيع وتركيب الكرتن وول بأعلى معايير الجودة العالمية. نستخدم أفضل المواد المستوردة مع ضمان 10 سنوات. يمكننا تقديم عرض سعر مجاني لمشروعك خلال 24 ساعة. هل تريد تحديد موعد لزيارة الموقع؟",
+        quickReplies: ['نعم، أريد عرض سعر', 'متى يمكن الزيارة؟', 'ما هي الأسعار التقريبية؟', 'أريد رؤية أعمالكم']
+      };
+    }
+    
+    if (message.includes('كلادينج') || message.includes('cladding') || message.includes('واجهات خارجية')) {
+      return {
+        text: "🏠 رائع! نوفر خدمات الكلادينج الخارجي للمباني التجارية والسكنية بأفضل المواد المقاومة للعوامل الجوية. نقدم ضمان 15 سنة على جميع أعمالنا. لدينا فريق فني متخصص ومرخص. هل لديك مشروع محدد؟",
+        quickReplies: ['نعم، لدي مشروع', 'أريد استشارة مجانية', 'ما هي أنواع الكلادينج؟', 'أريد عرض سعر']
+      };
+    }
+    
+    if (message.includes('نوافذ') || message.includes('أبواب') || message.includes('windows') || message.includes('doors') || message.includes('upvc') || message.includes('ألمنيوم')) {
+      return {
+        text: "🚪 ممتاز! نوفر نوافذ وأبواب ألمنيوم و UPVC عالية الجودة مع ضمان العزل الحراري والصوتي. نقدم ضمان 20 سنة على النوافذ و 10 سنوات على الأبواب. جميع منتجاتنا معتمدة من الهيئة السعودية للمقاولين. ما نوع النوافذ التي تبحث عنها؟",
+        quickReplies: ['نوافذ ألمنيوم', 'نوافذ UPVC', 'أبواب WPC', 'أريد عرض سعر', 'أريد استشارة']
+      };
+    }
+    
+    if (message.includes('سعر') || message.includes('تكلفة') || message.includes('price') || message.includes('cost') || message.includes('كم') || message.includes('تكلف')) {
+      return {
+        text: "💰 الأسعار تختلف حسب نوع الخدمة والمساحة والمواد المستخدمة. نقدم أسعار تنافسية مع ضمان أفضل جودة. يمكننا تقديم عرض سعر مجاني خلال 24 ساعة. ما نوع الخدمة التي تحتاجها؟",
+        quickReplies: ['أريد عرض سعر شخصي', 'ما هي العوامل المؤثرة؟', 'أريد استشارة مجانية', 'متى يمكن الحصول على السعر؟']
+      };
+    }
+    
+    if (message.includes('موعد') || message.includes('زيارة') || message.includes('appointment') || message.includes('visit')) {
+      return {
+        text: "يمكننا تحديد موعد لزيارة موقعك وتقييم المشروع. نحن متاحون من السبت إلى الخميس من 8 صباحاً إلى 6 مساءً. ما هو الوقت المناسب لك؟",
+        quickReplies: ['صباحاً', 'مساءً', 'عطلة نهاية الأسبوع', 'أريد حجز موعد']
+      };
+    }
+    
+    if (message.includes('ضمان') || message.includes('جودة') || message.includes('warranty') || message.includes('quality')) {
+      return {
+        text: "نحن نقدم ضمان شامل على جميع أعمالنا مع استخدام أفضل المواد المستوردة. لدينا فريق فني متخصص ومرخص من الهيئة السعودية للمقاولين.",
+        quickReplies: ['ما هي مدة الضمان؟', 'ما هي شهادات الجودة؟', 'أريد رؤية أعمالكم']
+      };
+    }
+    
+    if (message.includes('شكر') || message.includes('ممتاز') || message.includes('thanks') || message.includes('great')) {
+      return {
+        text: "شكراً لك! نحن سعداء بخدمتك. هل هناك أي استفسارات أخرى يمكننا مساعدتك فيها؟",
+        quickReplies: ['لا، شكراً', 'أريد المزيد من المعلومات', 'كيف أتواصل معكم؟']
+      };
+    }
+    
+    // Default response
+    return {
+      text: "👋 مرحباً! أنا مساعدك الذكي من كيان الخليج للصناعة. يمكنني مساعدتك في الاستفسارات حول خدماتنا: الكرتن وول، الكلادينج، النوافذ والأبواب. نحن متخصصون في تقديم حلول هندسية متطورة مع ضمان الجودة. كيف يمكنني مساعدتك اليوم؟",
+      quickReplies: ['أريد عرض سعر', 'استشارة مجانية', 'حجز موعد', 'معلومات عن الخدمات', 'أريد رؤية أعمالكم']
+    };
+  }
+
+  // Send message with AI response
+  function sendMessage(message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message sent';
+    messageDiv.innerHTML = `
+      <p>${message}</p>
+      <span class="time">الآن</span>
+    `;
+    whatsappMessages.appendChild(messageDiv);
+    whatsappMessages.scrollTop = whatsappMessages.scrollHeight;
+
+    // Show typing indicator
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'message received typing';
+    typingDiv.innerHTML = `
+      <div class="typing-indicator">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span class="time">يكتب...</span>
+    `;
+    whatsappMessages.appendChild(typingDiv);
+    whatsappMessages.scrollTop = whatsappMessages.scrollHeight;
+
+    // Generate AI response
+    setTimeout(() => {
+      const aiResponse = generateAIResponse(message);
+      
+      // Remove typing indicator
+      whatsappMessages.removeChild(typingDiv);
+      
+      // Add AI response
+      const responseDiv = document.createElement('div');
+      responseDiv.className = 'message received';
+      responseDiv.innerHTML = `
+        <p>${aiResponse.text}</p>
+        <span class="time">الآن</span>
+      `;
+      whatsappMessages.appendChild(responseDiv);
+      whatsappMessages.scrollTop = whatsappMessages.scrollHeight;
+      
+      // Add quick replies if available
+      if (aiResponse.quickReplies && aiResponse.quickReplies.length > 0) {
+        const quickRepliesDiv = document.createElement('div');
+        quickRepliesDiv.className = 'quick-replies-container';
+        quickRepliesDiv.innerHTML = `
+          <div class="quick-replies">
+            ${aiResponse.quickReplies.map(reply => 
+              `<button class="quick-reply-btn" data-message="${reply}">${reply}</button>`
+            ).join('')}
+          </div>
+        `;
+        whatsappMessages.appendChild(quickRepliesDiv);
+        whatsappMessages.scrollTop = whatsappMessages.scrollHeight;
+        
+        // Add event listeners to quick reply buttons
+        quickRepliesDiv.querySelectorAll('.quick-reply-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const replyMessage = btn.getAttribute('data-message');
+            sendMessage(replyMessage);
+            quickRepliesDiv.remove();
+          });
+        });
+      }
+    }, 1500 + Math.random() * 1000); // Random delay for more natural feel
+  }
+
+  // Send button click
+  whatsappSend.addEventListener('click', () => {
+    const message = whatsappInput.value.trim();
+    if (message) {
+      sendMessage(message);
+      whatsappInput.value = '';
+    }
+  });
+
+  // Enter key to send
+  whatsappInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      const message = whatsappInput.value.trim();
+      if (message) {
+        sendMessage(message);
+        whatsappInput.value = '';
+      }
+    }
+  });
+
+  // Quick message buttons
+  quickMessages.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const message = btn.getAttribute('data-message');
+      sendMessage(message);
+    });
+  });
+}
+
+// Search Functionality
+function initializeSearch() {
+  const searchToggle = document.getElementById('search-toggle');
+  const searchOverlay = document.getElementById('search-overlay');
+  const searchClose = document.getElementById('search-close');
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchResults = document.getElementById('search-results');
+
+  if (!searchToggle || !searchOverlay) return;
+
+  // Search data
+  const searchData = [
+    { title: 'كرتن وول', description: 'واجهات زجاجية حديثة', url: 'projects-aluminum-glass.html', category: 'خدمات' },
+    { title: 'كلادينج', description: 'واجهات خارجية للمباني', url: 'projects-cladding.html', category: 'خدمات' },
+    { title: 'نوافذ ألمنيوم', description: 'نوافذ عالية الجودة', url: 'products.html', category: 'منتجات' },
+    { title: 'أبواب WPC', description: 'أبواب مقاومة للماء', url: 'projects-wpc-doors.html', category: 'منتجات' },
+    { title: 'نوافذ UPVC', description: 'نوافذ عازلة للحرارة', url: 'projects-upvc-windows.html', category: 'منتجات' },
+    { title: 'كابائن الدش', description: 'كابائن مخصصة', url: 'products.html', category: 'خدمات' },
+    { title: 'درابزين', description: 'درابزين ألمنيوم', url: 'products.html', category: 'منتجات' },
+    { title: 'رولر شتر', description: 'ستائر أمنية', url: 'products.html', category: 'منتجات' },
+    { title: 'قواطع زجاجية', description: 'قواطع للمكاتب', url: 'products.html', category: 'خدمات' },
+    { title: 'مطابخ', description: 'مطابخ مخصصة', url: 'products.html', category: 'خدمات' }
+  ];
+
+  // Toggle search overlay
+  searchToggle.addEventListener('click', () => {
+    searchOverlay.classList.add('show');
+    searchInput.focus();
+  });
+
+  // Close search overlay
+  searchClose.addEventListener('click', () => {
+    searchOverlay.classList.remove('show');
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+  });
+
+  // Close on overlay click
+  searchOverlay.addEventListener('click', (e) => {
+    if (e.target === searchOverlay) {
+      searchOverlay.classList.remove('show');
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+    }
+  });
+
+  // Search function
+  function performSearch(query) {
+    if (!query.trim()) {
+      searchResults.innerHTML = '';
+      return;
+    }
+
+    const results = searchData.filter(item => 
+      item.title.toLowerCase().includes(query.toLowerCase()) ||
+      item.description.toLowerCase().includes(query.toLowerCase()) ||
+      item.category.toLowerCase().includes(query.toLowerCase())
+    );
+
+    searchResults.innerHTML = '';
+    
+    if (results.length === 0) {
+      searchResults.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">لم يتم العثور على نتائج</p>';
+      return;
+    }
+
+    results.forEach(result => {
+      const resultDiv = document.createElement('div');
+      resultDiv.className = 'search-result-item';
+      resultDiv.innerHTML = `
+        <h4>${result.title}</h4>
+        <p>${result.description} - ${result.category}</p>
+      `;
+      resultDiv.addEventListener('click', () => {
+        window.location.href = result.url;
+      });
+      searchResults.appendChild(resultDiv);
+    });
+  }
+
+  // Search input event
+  searchInput.addEventListener('input', (e) => {
+    performSearch(e.target.value);
+  });
+
+  // Search button click
+  searchBtn.addEventListener('click', () => {
+    performSearch(searchInput.value);
+  });
+
+  // Enter key to search
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      performSearch(searchInput.value);
+    }
+  });
+}
+
+// Dark Mode Functionality
+function initializeDarkMode() {
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  
+  if (!darkModeToggle) return;
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+  }
+
+  // Toggle dark mode
+  darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('theme', 'dark');
+      darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    } else {
+      localStorage.setItem('theme', 'light');
+      darkModeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    }
+  });
+}
+
+
+// Testimonials Form Functionality
+function initializeTestimonialsForm() {
+  const testimonialForm = document.getElementById('testimonial-form');
+  
+  if (!testimonialForm) return;
+
+  testimonialForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(testimonialForm);
+    const testimonialData = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      service: formData.get('service'),
+      rating: formData.get('rating'),
+      message: formData.get('message'),
+      date: new Date().toISOString()
+    };
+
+    // Save to localStorage (in real app, send to server)
+    const testimonials = JSON.parse(localStorage.getItem('testimonials') || '[]');
+    testimonials.push({
+      ...testimonialData,
+      id: Date.now(),
+      status: 'pending',
+      approved: false
+    });
+    localStorage.setItem('testimonials', JSON.stringify(testimonials));
+
+    // Show success message
+    showNotification('شكراً لك! تم إرسال تقييمك بنجاح. سيتم مراجعته ونشره قريباً.', 'success');
+    
+    // Reset form
+    testimonialForm.reset();
+    
+    // Reset star rating
+    document.querySelectorAll('.testimonial-form .rating-stars input[type="radio"]').forEach(radio => {
+      radio.checked = false;
+    });
+  });
+
+  // Star rating interaction
+  const stars = testimonialForm.querySelectorAll('.rating-stars .star');
+  stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+      const rating = 5 - index;
+      const radio = testimonialForm.querySelector(`input[value="${rating}"]`);
+      if (radio) {
+        radio.checked = true;
+      }
+    });
+    
+    star.addEventListener('mouseenter', () => {
+      const rating = 5 - index;
+      highlightStars(rating);
+    });
+  });
+
+  const ratingContainer = testimonialForm.querySelector('.rating-stars');
+  ratingContainer.addEventListener('mouseleave', () => {
+    const checkedRadio = testimonialForm.querySelector('.rating-stars input[type="radio"]:checked');
+    if (checkedRadio) {
+      highlightStars(parseInt(checkedRadio.value));
+    } else {
+      highlightStars(0);
+    }
+  });
+
+  function highlightStars(rating) {
+    stars.forEach((star, index) => {
+      const starRating = 5 - index;
+      if (starRating <= rating) {
+        star.style.color = '#ffd700';
+      } else {
+        star.style.color = '#ddd';
+      }
+    });
+  }
+}
+
+// Enhanced Mobile Menu Fix
+function fixMobileMenu() {
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const mainNav = document.querySelector('.main-nav');
+  
+  if (mobileMenuBtn && mainNav) {
+    // Remove existing event listeners by cloning the elements
+    const newMobileMenuBtn = mobileMenuBtn.cloneNode(true);
+    const newMainNav = mainNav.cloneNode(true);
+    
+    mobileMenuBtn.parentNode.replaceChild(newMobileMenuBtn, mobileMenuBtn);
+    mainNav.parentNode.replaceChild(newMainNav, mainNav);
+    
+    // Re-initialize mobile menu
+    initializeMobileMenu();
+  }
+}
 
 // لا يوجد نص ساعات العمل ثابت في js، كل شيء يعتمد على الترجمة أو HTML

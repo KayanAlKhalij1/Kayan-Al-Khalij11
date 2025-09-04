@@ -1,520 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>مشاريع نوافذ وأبواب UPVC | كيان الخليج</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="window_icon_125687.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <style>
-        /* UPVC Colors Section Styles */
-        .upvc-colors-section {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e3f2fd 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .upvc-colors-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(13,71,161,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
-            opacity: 0.5;
-        }
-
-        .upvc-colors-section .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .upvc-colors-section .section-subtitle {
-            text-align: center;
-            color: #666;
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .color-models-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .color-model-card {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: 0.3s ease;
-            border: 1px solid #e0e0e0;
-        }
-
-        .color-model-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-        }
-
-        .color-swatch {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .color-swatch img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: 0.3s ease;
-        }
-
-        .color-model-card:hover .color-swatch img {
-            transform: scale(1.05);
-        }
-
-        .color-info {
-            padding: 2rem;
-        }
-
-        .color-info h3 {
-            color: #0d47a1;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .color-info p {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .color-list {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .color-list li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .color-list li:last-child {
-            border-bottom: none;
-        }
-
-        .color-name {
-            font-weight: 600;
-            color: #0d47a1;
-            margin-left: 0.5rem;
-            min-width: 120px;
-        }
-
-        .color-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .color-features span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #f8fafc;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #666;
-            border: 1px solid #e0e0e0;
-        }
-
-        .color-features i {
-            color: #0d47a1;
-            font-size: 0.8rem;
-        }
-
-        .color-benefits {
-            margin-top: 3rem;
-        }
-
-        .color-benefits h3 {
-            text-align: center;
-            color: #0d47a1;
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .benefit-item {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: 0.3s ease;
-            border: 1px solid #e0e0e0;
-        }
-
-        .benefit-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-        }
-
-        .benefit-item i {
-            font-size: 2.5rem;
-            color: #0d47a1;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .benefit-item h4 {
-            color: #222;
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .benefit-item p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        /* Responsive Design for UPVC Colors Section */
-        @media (max-width: 900px) {
-            .upvc-colors-section {
-                padding: 3rem 0;
-            }
-            
-            .color-models-grid {
-                gap: 1.5rem;
-            }
-            
-            .color-info {
-                padding: 1.5rem;
-            }
-            
-            .color-info h3 {
-                font-size: 1.3rem;
-            }
-            
-            .benefits-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .benefit-item {
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .upvc-colors-section {
-                padding: 2rem 0;
-            }
-            
-            .upvc-colors-section .section-subtitle {
-                font-size: 1rem;
-                margin-bottom: 2rem;
-            }
-            
-            .color-swatch img {
-                height: 200px;
-            }
-            
-            .color-info {
-                padding: 1rem;
-            }
-            
-            .color-info h3 {
-                font-size: 1.2rem;
-            }
-            
-            .color-features {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            
-            .color-features span {
-                justify-content: center;
-            }
-            
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .benefit-item {
-                padding: 1rem;
-            }
-            
-            .benefit-item i {
-                font-size: 2rem;
-            }
-            
-            .benefit-item h4 {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
-</head>
-<body lang="ar">
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-right">
-                <span class="top-bar-item"><i class="fa-solid fa-location-dot"></i><span>الرياض، طريق الملك عبدالعزيز</span></span>
-                <span class="top-bar-item"><i class="fa-solid fa-envelope"></i><a href="mailto:info@kayanfactory.com" class="top-bar-link">info@kayanfactory.com</a></span>
-                <span class="top-bar-item"><i class="fa-solid fa-phone"></i><a href="tel:+966545666924" class="top-bar-link">+966545666924</a></span>
-            </div>
-            <div class="lang-switcher">
-                <button id="lang-toggle" class="lang-btn" type="button"><span class="flag">🇸🇦</span> <span>العربية</span></button>
-                <div id="lang-dropdown" class="lang-dropdown" style="display:none;">
-                    <button data-lang="ar" class="lang-option"><span class="flag">🇸🇦</span> <span>العربية</span></button>
-                    <button data-lang="en" class="lang-option"><span class="flag">🇬🇧</span> <span>English</span></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <header class="main-header">
-        <div class="container nav-flex">
-            <div class="logo-block">
-                <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
-                <div class="logo-text">
-                    <div class="logo-title">كيان الخليج للصناعة</div>
-                    <div class="logo-sub">Kayan Alkhalij Manufacturing</div>
-                </div>
-            </div>
-            <nav class="main-nav">
-                <a href="index.html"><i class="fa-solid fa-house"></i> <span>الرئيسية</span></a>
-                <a href="products.html"><i class="fa-solid fa-box"></i> <span>منتجاتنا</span></a>
-                <a href="projects.html" class="active"><i class="fa-solid fa-diagram-project"></i> <span>مشاريعنا</span></a>
-                <a href="about.html"><i class="fa-solid fa-users"></i> <span>من نحن</span></a>
-                <a href="contact.html"><i class="fa-solid fa-phone"></i> <span>اتصل بنا</span></a>
-            </nav>
-            <button class="mobile-menu-btn" aria-label="القائمة">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </header>
-
-    <section class="hero-section projects-hero">
-        <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <h1 class="hero-title" style="color:#111;">مشاريع نوافذ وأبواب UPVC</h1>
-                <p class="hero-subtitle" style="color:#111;">اكتشف مجموعة متنوعة من مشاريعنا المميزة في مجال نوافذ وأبواب UPVC عالية الجودة</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="products-section">
-        <div class="container">
-            <h1 class="section-title" style="margin-bottom:2rem;">مميزات مشاريع UPVC</h1>
-            <div class="products-grid">
-                <div class="product-card" data-aos="fade-up">
-                    <h3><i class="fa-solid fa-snowflake"></i> العزل الحراري الممتاز</h3>
-                    <p>نوافذ وأبواب UPVC توفر عزل حراري ممتاز، مما يساعد في توفير الطاقة وتقليل فواتير الكهرباء في الصيف والشتاء.</p>
-                </div>
-                <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                    <h3><i class="fa-solid fa-volume-mute"></i> العزل الصوتي</h3>
-                    <p>أنظمة UPVC توفر عزل صوتي عالي الجودة، مما يجعلها مثالية للمباني في المناطق الصاخبة أو بالقرب من الطرق السريعة.</p>
-                </div>
-                <div class="product-card" data-aos="fade-up" data-aos-delay="200">
-                    <h3><i class="fa-solid fa-shield-halved"></i> المتانة والصلابة</h3>
-                    <p>مادة UPVC مقاومة للعوامل الجوية والتآكل، مما يجعلها تدوم لفترات طويلة دون الحاجة للصيانة الدورية.</p>
-                </div>
-                <div class="product-card" data-aos="fade-up" data-aos-delay="300">
-                    <h3><i class="fa-solid fa-leaf"></i> صديقة للبيئة</h3>
-                    <p>UPVC قابل لإعادة التدوير بنسبة 100%، مما يجعله خيارًا صديقًا للبيئة ويساهم في تقليل البصمة الكربونية.</p>
-                </div>
-                <div class="product-card" data-aos="fade-up" data-aos-delay="400">
-                    <h3><i class="fa-solid fa-broom"></i> سهولة الصيانة</h3>
-                    <p>نوافذ وأبواب UPVC سهلة التنظيف والصيانة، ولا تحتاج إلى طلاء أو معالجات خاصة مثل الخشب.</p>
-                </div>
-                <div class="product-card" data-aos="fade-up" data-aos-delay="500">
-                    <h3><i class="fa-solid fa-palette"></i> التصميم الجمالي</h3>
-                    <p>توفر أنظمة UPVC تصاميم متنوعة وألوان مختلفة، مما يتناسب مع مختلف الأنماط المعمارية والديكورات.</p>
-                </div>
-            </div>
-            <div style="margin:3rem 0 2rem;">
-                <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1.5rem;">أنواع النوافذ والأبواب</h2>
-                <div class="quick-links" style="justify-content:flex-start;">
-                    <span class="quick-link"><i class="fa-solid fa-window-maximize"></i> نوافذ انزلاقية</span>
-                    <span class="quick-link"><i class="fa-solid fa-door-open"></i> أبواب انزلاقية</span>
-                    <span class="quick-link"><i class="fa-solid fa-window-restore"></i> نوافذ مفتوحة</span>
-                    <span class="quick-link"><i class="fa-solid fa-door-closed"></i> أبواب مفصلية</span>
-                </div>
-            </div>
-            <div class="doors-gallery" style="margin-top:3rem;">
-                <h2 class="section-title" style="font-size:1.3rem;margin-bottom:2rem;">نماذج من مشاريعنا</h2>
-                <div class="products-grid">
-                    <div class="product-card" data-aos="fade-up">
-                        <img src="assets/Screenshot 2025-07-20 213415_1753036615327.png" alt="نوافذ UPVC" style="height:320px;object-fit:cover;">
-                        <h3>نوافذ UPVC عازلة</h3>
-                    </div>
-                    <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                        <img src="assets/Screenshot 2025-07-20 213428_1753036605405.png" alt="أبواب UPVC" style="height:320px;object-fit:cover;">
-                        <h3>أبواب UPVC انزلاقية</h3>
-                    </div>
-                    <div class="product-card" data-aos="fade-up" data-aos-delay="200">
-                        <img src="Screenshot 2025-07-30 093852.png" alt="نظام UPVC" style="height:320px;object-fit:cover;">
-                        <h3>نظام UPVC متكامل</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="upvc-colors-section">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">نماذج ألوان UPVC</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">اختر من مجموعة متنوعة من الألوان الطبيعية والحديثة لنوافذ وأبواب UPVC</p>
-            
-            <div class="color-models-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="color-model-card">
-                    <div class="color-swatch">
-                        <img src="Screenshot 2025-07-30 101752.png" alt="نماذج ألوان UPVC" style="width:100%;height:200px;object-fit:cover;border-radius:8px;">
-                    </div>
-                    <div class="color-info">
-                        <h3>ألوان UPVC المتنوعة</h3>
-                        <p>مجموعة شاملة من الألوان الطبيعية والحديثة تشمل:</p>
-                        <ul class="color-list">
-                            <li><span class="color-name">Golden Oak</span> - البلوط الذهبي</li>
-                            <li><span class="color-name">Brown Oak</span> - البلوط البني</li>
-                            <li><span class="color-name">Dark Oak</span> - البلوط الداكن</li>
-                            <li><span class="color-name">Black Walnut</span> - الجوز الأسود</li>
-                        </ul>
-                        <div class="color-features">
-                            <span><i class="fa-solid fa-palette"></i> ألوان طبيعية</span>
-                            <span><i class="fa-solid fa-shield-halved"></i> مقاومة للأشعة فوق البنفسجية</span>
-                            <span><i class="fa-solid fa-broom"></i> سهولة التنظيف</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="color-benefits" data-aos="fade-up" data-aos-delay="300">
-                <h3>مميزات ألوان UPVC</h3>
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <i class="fa-solid fa-sun"></i>
-                        <h4>مقاومة للأشعة فوق البنفسجية</h4>
-                        <p>الألوان لا تتلاشى مع مرور الوقت تحت أشعة الشمس</p>
-                    </div>
-                    <div class="benefit-item">
-                        <i class="fa-solid fa-temperature-high"></i>
-                        <h4>مقاومة للحرارة</h4>
-                        <p>تحتفظ بلونها حتى في درجات الحرارة العالية</p>
-                    </div>
-                    <div class="benefit-item">
-                        <i class="fa-solid fa-droplet"></i>
-                        <h4>مقاومة للرطوبة</h4>
-                        <p>لا تتأثر بالرطوبة أو العوامل الجوية</p>
-                    </div>
-                    <div class="benefit-item">
-                        <i class="fa-solid fa-paintbrush"></i>
-                        <h4>ألوان دائمة</h4>
-                        <p>لا تحتاج إلى إعادة طلاء أو صيانة دورية</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="projects-stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item" data-aos="fade-up">
-                    <div class="stat-icon"><i class="fa-solid fa-window-maximize"></i></div>
-                    <div class="stat-number">60+</div>
-                    <div class="stat-label">مشروع UPVC</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
-                    <div class="stat-number">90+</div>
-                    <div class="stat-label">عميل راضي</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
-                    <div class="stat-number">4.7</div>
-                    <div class="stat-label">تقييم متوسط</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
-                    <div class="stat-number">7+</div>
-                    <div class="stat-label">سنوات خبرة</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-col footer-logo-block">
-                <div class="logo-img"><img src="WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg" alt="شعار كيان الخليج"></div>
-                <div class="logo-text">
-                    <div class="logo-title">كيان الخليج للصناعة</div>
-                    <div class="logo-sub">Kayan Alkhalij Manufacturing</div>
-                </div>
-            </div>
-            <div class="footer-col">
-                <div class="footer-title">روابط سريعة</div>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="products.html">منتجاتنا</a></li>
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="contact.html">اتصل بنا</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <div class="footer-title">خدماتنا</div>
-                <ul>
-                    <li><span>كرتن وول وكلادينج</span></li>
-                    <li><span>نوافذ وأبواب</span></li>
-                    <li><span>كابائن الدش</span></li>
-                    <li><span>درابزين ورولر شتر</span></li>
-                    <li><span>قواطع زجاجية ومطابخ</span></li>
-                </ul>
-            </div>
-            <div class="footer-col footer-socials">
-                <a href="https://www.facebook.com/share/1AiZX5aWux/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://x.com/Kayanalkhalij?t=ju5kCDg-ElJ1n_7MiXtvBw&s=09" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/company/kayan-aluminum-factory/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/966545666924" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.instagram.com/kayanalkhalij.eng1?igsh=MTVmMGlidWJlOGZlZA==" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2025 كيان الخليج للصناعة. جميع الحقوق محفوظة.</span>
-            <div>
-                <a href="privacy.html">سياسة الخصوصية</a>
-                <a href="terms.html">الشروط والأحكام</a>
-            </div>
-        </div>
-    </footer>
-    
-    <button id="back-to-top" class="back-to-top" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
-</body>
-</html> 

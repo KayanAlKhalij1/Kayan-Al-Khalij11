@@ -45,11 +45,8 @@ Disallow: /*.bak
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://kayanfactory.com/sitemap.xml
+Sitemap: https://kayanfactory.netlify.app/sitemap.xml
 
 # Additional sitemaps
-Sitemap: https://kayanfactory.com/sitemap-images.xml
-Sitemap: https://kayanfactory.com/sitemap-videos.xml
-
-# Host directive
-Host: https://kayanfactory.com 
+# Host directive (optional; many crawlers ignore it)
+Host: kayanfactory.netlify.app

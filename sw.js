@@ -7,18 +7,18 @@ const DYNAMIC_CACHE = 'kayan-dynamic-v2.0.0';
 
 // Files to cache immediately
 const STATIC_FILES = [
-  '/',
-  '/index.html',
-  '/about.html',
-  '/products.html',
-  '/contact.html',
-  '/comments.html',
-  '/style.css',
-  '/script.js',
-  '/manifest.json',
-  '/translations.json',
-  '/robots.txt',
-  '/sitemap.xml'
+  './',
+  './index.html',
+  './about.html',
+  './products.html',
+  './contact.html',
+  './comments.html',
+  './style.css',
+  './script.js',
+  './manifest.json',
+  './translations.json',
+  './robots.txt',
+  './sitemap.xml'
 ];
 
 // External resources to cache
@@ -121,8 +121,8 @@ self.addEventListener('fetch', event => {
               if (response) {
                 return response;
               }
-              // Fallback to index.html for SPA routing
-              return caches.match('/index.html');
+              // Fallback to index.html for SPA routing (relative path for subfolder hosting)
+              return caches.match('./index.html');
             });
         })
     );
@@ -178,8 +178,8 @@ self.addEventListener('push', event => {
   
   const options = {
     body: event.data ? event.data.text() : 'كيان الخليج للصناعة',
-    icon: '/window_icon_125687.svg',
-    badge: '/window_icon_125687.svg',
+    icon: './window_icon_125687.svg',
+    badge: './window_icon_125687.svg',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -189,12 +189,12 @@ self.addEventListener('push', event => {
       {
         action: 'explore',
         title: 'تصفح الموقع',
-        icon: '/window_icon_125687.svg'
+        icon: './window_icon_125687.svg'
       },
       {
         action: 'close',
         title: 'إغلاق',
-        icon: '/window_icon_125687.svg'
+        icon: './window_icon_125687.svg'
       }
     ]
   };
@@ -212,14 +212,14 @@ self.addEventListener('notificationclick', event => {
   
   if (event.action === 'explore') {
     event.waitUntil(
-      clients.openWindow('/index.html')
+      clients.openWindow('./index.html')
     );
   } else if (event.action === 'close') {
     // Do nothing, notification already closed
   } else {
     // Default action
     event.waitUntil(
-      clients.openWindow('/index.html')
+      clients.openWindow('./index.html')
     );
   }
 });

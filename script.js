@@ -557,7 +557,22 @@ function initializeStatsCounter() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const stat = entry.target;
-        const target = parseInt(stat.getAttribute('data-count'));
+        const rawValue = stat.getAttribute('data-count');
+        const parsedTarget = Number(rawValue);
+
+        // Guard against NaN or missing values
+        if (!Number.isFinite(parsedTarget)) {
+          // If there's any readable text/number use it, else show fallback label
+          if (rawValue && String(rawValue).trim().length > 0) {
+            stat.textContent = String(rawValue).trim();
+          } else {
+            stat.textContent = 'العدد والكمية';
+          }
+          statsObserver.unobserve(stat);
+          return;
+        }
+
+        const target = parsedTarget;
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
@@ -707,8 +722,8 @@ function initializeSEO() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "كيان الخليج للصناعة",
-    "url": "https://kayanfactory.com",
-    "logo": "https://kayanfactory.com/WhatsApp Image 2025-07-08 at 17.49.46_02d7f189_1753025271754.jpg",
+    "url": "https://kayanfactory.netlify.app",
+    "logo": "https://kayanfactory.netlify.app/WhatsApp%20Image%202025-07-08%20at%2017.49.46_02d7f189_1753025271754.jpg",
     "description": "رؤية هندسية متطورة في مجال الكرتن وول والكلادينج والنوافذ والأبواب",
     "address": {
       "@type": "PostalAddress",
@@ -733,8 +748,15 @@ function initializeSEO() {
 // Initialize service worker
 function initializeServiceWorker() {
   if ('serviceWorker' in navigator) {
+    const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '';
+    if (isLocalhost) {
+      // Avoid SW in local dev to reduce caching differences
+      return;
+    }
+
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
+      // Use relative path to work on subfolder hosting as well
+      navigator.serviceWorker.register('./sw.js')
         .then(registration => {
           console.log('SW registered: ', registration);
         })

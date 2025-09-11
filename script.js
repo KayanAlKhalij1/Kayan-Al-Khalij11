@@ -30,32 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 100);
 });
 
-// Enhanced carousel images with local content only
+// استخدم صورة واحدة فقط للكاروسيل
 const carouselImages = [
-  'Screenshot 2025-07-20 213311_1753036903982.png',
-  'Screenshot 2025-07-20 213323_1753036903981.png',
-  'Screenshot 2025-07-20 213337_1753036903980.png',
-  'Screenshot 2025-07-20 213351_1753036896131.png',
-  'Screenshot 2025-07-20 213404_1753036896130.png',
-  'Screenshot 2025-07-20 213415_1753036896130.png',
-  'Screenshot 2025-07-20 213428_1753036896129.png',
-  'Screenshot 2025-07-20 213440_1753036896129.png',
-  'Screenshot 2025-07-20 213452_1753036896128.png',
-  'Screenshot 2025-07-20 213507_1753036896128.png',
-  'Screenshot 2025-07-20 213351_1753036615329.png',
-  'Screenshot 2025-07-20 213404_1753036615328.png',
-  'Screenshot 2025-07-20 213415_1753036615327.png',
-  'Screenshot 2025-07-20 213311_1753036605407.png',
-  'Screenshot 2025-07-20 213337_1753036605405.png',
-  'Screenshot 2025-07-20 213428_1753036605405.png',
-  'Screenshot 2025-07-20 213452_1753036605404.png',
-  'Screenshot 2025-07-20 213507_1753036605402.png',
-  'Screenshot 2025-07-20 213323_1753036605406.png',
-  'Screenshot 2025-07-20 213440_1753036605404.png',
-  'Screenshot 2025-07-20 213250_1753036605407.png'
+  'WhatsApp Image 2025-07-31 at 12.35.10_3ca7ce88.jpg'
 ];
-
-// Use only local images
 const allCarouselImages = carouselImages;
 
 let currentIndex = 0;
@@ -1042,6 +1020,56 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeTestimonialsForm();
   fixMobileMenu();
 
+  // عدل إحصائيات الهيرو لتكون في المنتصف وتظهر أرقام حقيقية
+  function initializeHeroStats() {
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) {
+      heroStats.style.justifyContent = 'center';
+      heroStats.style.textAlign = 'center';
+      heroStats.querySelectorAll('.stat-item').forEach(item => {
+        item.style.textAlign = 'center';
+        item.style.margin = '0 1rem';
+      });
+      // أرقام واقعية
+      const stats = [
+        { selector: '.stat-number', value: ['15+', '500+', '100%'] }
+      ];
+      heroStats.querySelectorAll('.stat-number').forEach((el, i) => {
+        el.textContent = stats[0].value[i] || '';
+      });
+    }
+  }
+
+  // أضف شريط التابات السريع للموبايل
+  function injectMobileTabsBar() {
+    if (document.querySelector('.mobile-tabs-bar')) return;
+    if (window.innerWidth > 900) return; // فقط للموبايل
+    const bar = document.createElement('div');
+    bar.className = 'mobile-tabs-bar';
+    bar.style.cssText = `
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 9999;
+      height: 56px;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
+    `;
+    bar.innerHTML = `
+      <a href="index.html"><i class="fa fa-home"></i><span>الرئيسية</span></a>
+      <a href="products.html"><i class="fa fa-box"></i><span>منتجاتنا</span></a>
+      <a href="projects.html"><i class="fa fa-diagram-project"></i><span>مشاريعنا</span></a>
+      <a href="contact.html"><i class="fa fa-phone"></i><span>اتصل بنا</span></a>
+    `;
+    document.body.appendChild(bar);
+  }
+
+  initializeHeroStats();
+  injectMobileTabsBar();
+
   // Add keyboard navigation support
   document.addEventListener('keydown', (e) => {
     // Escape key to close modals/dropdowns
@@ -1537,5 +1565,3 @@ function fixMobileMenu() {
     initializeMobileMenu();
   }
 }
-
-// لا يوجد نص ساعات العمل ثابت في js، كل شيء يعتمد على الترجمة أو HTML

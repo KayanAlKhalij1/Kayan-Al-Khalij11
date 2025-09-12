@@ -30,10 +30,16 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 100);
 });
 
-// استخدم صورة واحدة فقط للكاروسيل
+// Curated, reliable carousel images (local)
 const carouselImages = [
+  'smart-aluminium-windows-1024x683-1-1000x570.png',
+  'bg_header-cladding.jpg',
+  '9919016-1171360793.jpg',
+  'sasa6.jpg',
   'WhatsApp Image 2025-07-31 at 12.35.10_3ca7ce88.jpg'
 ];
+
+// Use only local images
 const allCarouselImages = carouselImages;
 
 let currentIndex = 0;
@@ -42,37 +48,60 @@ let autoPlayInterval;
 // Enhanced carousel functionality
 function initializeCarousel() {
   const carousel = document.getElementById('carousel');
-  const prevBtn = document.getElementById('prev');
-  const nextBtn = document.getElementById('next');
-  
-  if (!carousel) return;
+  if (!carousel) return; // gallery section removed per request
+
+  // pre-inserted <img> tags: reuse for reliability (no layout shift)
+  const slots = [];
+  if (slots.length === 0) {
+    // fallback: create once based on data
+    allCarouselImages.forEach((src, i) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = `Slide ${i+1}`;
+      img.loading = i === 0 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      img.style.display = '';
+      carousel.appendChild(img);
+      slots.push(img);
+    });
+  } else {
+    // sync sources with curated array
+    slots.forEach((img, i) => { if (allCarouselImages[i]) { img.src = allCarouselImages[i]; } img.style.display=''; });
+  }
+
+  function updateCaptions(i){
+    const captions = [
+      {t:'واجهة زجاجية متطورة', s:'تنفيذ احترافي ومعايير جودة عالية'},
+      {t:'كلادينج عملي', s:'جماليات مع متانة ومقاومة'},
+      {t:'تفاصيل ألمنيوم دقيقة', s:'حلول هندسية موثوقة'},
+      {t:'تركيب احترافي', s:'فريق متخصص وخبرة طويلة'},
+      {t:'مشروع حديث', s:'نتائج تضيف قيمة للمباني'}
+    ];
+    const c = captions[i % captions.length];
+    if (captionTitle && captionSub && c){ captionTitle.textContent = c.t; captionSub.textContent = c.s; }
+  }
+
+  // create dots
+  if (dotsContainer) {
+    dotsContainer.innerHTML = '';
+    slots.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i===0 ? ' active' : '');
+      dot.addEventListener('click', () => { currentIndex = i; showImage(currentIndex); resetAutoPlay(); track && track.scrollTo({left: track.clientWidth*i, behavior:'smooth'}); });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function setActiveDot(i){
+    if (!dotsContainer) return;
+    dotsContainer.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx===i));
+  }
 
   function showImage(index) {
-    carousel.innerHTML = '';
-    const img = document.createElement('img');
-    img.src = allCarouselImages[index];
-    img.alt = `Gallery Image ${index + 1}`;
-    img.style.transition = 'opacity 0.5s ease-in-out';
-    img.style.width = '100%';
-    img.style.height = '400px';
-    img.style.objectFit = 'cover';
-    img.style.borderRadius = '8px';
-    
-    // Handle image load error
-    img.onerror = function() {
-      console.log(`Failed to load image: ${allCarouselImages[index]}`);
-      // Try next image
-      currentIndex = (currentIndex + 1) % allCarouselImages.length;
-      showImage(currentIndex);
-    };
-    
-    carousel.appendChild(img);
-    
-    // Add fade-in animation
-    img.style.opacity = '0';
-    setTimeout(() => {
-      img.style.opacity = '1';
-    }, 50);
+    // Show active image via class
+    slots.forEach((img, i) => img.classList.toggle('is-active', i === index));
+    setActiveDot(index);
+    updateCaptions(index);
   }
 
   function nextImage() {
@@ -100,6 +129,8 @@ function initializeCarousel() {
     });
   }
 
+  // Arrows inside slider were removed in revert
+
   // Auto-play functionality
   function startAutoPlay() {
     autoPlayInterval = setInterval(nextImage, 5000);
@@ -112,6 +143,7 @@ function initializeCarousel() {
 
   // Initialize carousel
   showImage(currentIndex);
+  // nothing extra on init
   startAutoPlay();
 
   // Pause auto-play on hover
@@ -184,22 +216,25 @@ function setLanguage(lang) {
         const value = translations && translations[key];
         if (!value) return;
 
-        // If element has child elements (e.g., icons), preserve them and only replace the text portion
+        // If element has children (e.g., icon + label), update existing label instead of duplicating
         if (el.children && el.children.length > 0) {
-          // Remove existing text nodes
+          // Remove stray text nodes to avoid duplicates
           Array.from(el.childNodes).forEach(node => {
             if (node.nodeType === Node.TEXT_NODE) {
               node.parentNode && node.parentNode.removeChild(node);
             }
           });
-          // Find or create a dedicated text span
-          let textSpan = el.querySelector('.i18n-text');
-          if (!textSpan) {
-            textSpan = document.createElement('span');
-            textSpan.className = 'i18n-text';
-            el.appendChild(textSpan);
+          // Prefer an existing non-icon span as label
+          let labelEl = Array.from(el.children).find(ch => ch.tagName !== 'I');
+          if (!labelEl) {
+            labelEl = el.querySelector('.i18n-text');
           }
-          textSpan.textContent = value;
+          if (!labelEl) {
+            labelEl = document.createElement('span');
+            labelEl.className = 'i18n-text';
+            el.appendChild(labelEl);
+          }
+          labelEl.textContent = value;
         } else {
           el.textContent = value;
         }
@@ -1020,56 +1055,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeTestimonialsForm();
   fixMobileMenu();
 
-  // عدل إحصائيات الهيرو لتكون في المنتصف وتظهر أرقام حقيقية
-  function initializeHeroStats() {
-    const heroStats = document.querySelector('.hero-stats');
-    if (heroStats) {
-      heroStats.style.justifyContent = 'center';
-      heroStats.style.textAlign = 'center';
-      heroStats.querySelectorAll('.stat-item').forEach(item => {
-        item.style.textAlign = 'center';
-        item.style.margin = '0 1rem';
-      });
-      // أرقام واقعية
-      const stats = [
-        { selector: '.stat-number', value: ['15+', '500+', '100%'] }
-      ];
-      heroStats.querySelectorAll('.stat-number').forEach((el, i) => {
-        el.textContent = stats[0].value[i] || '';
-      });
-    }
-  }
-
-  // أضف شريط التابات السريع للموبايل
-  function injectMobileTabsBar() {
-    if (document.querySelector('.mobile-tabs-bar')) return;
-    if (window.innerWidth > 900) return; // فقط للموبايل
-    const bar = document.createElement('div');
-    bar.className = 'mobile-tabs-bar';
-    bar.style.cssText = `
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: #fff;
-      border-top: 1px solid #e5e7eb;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 9999;
-      height: 56px;
-      box-shadow: 0 -2px 8px rgba(0,0,0,0.07);
-    `;
-    bar.innerHTML = `
-      <a href="index.html"><i class="fa fa-home"></i><span>الرئيسية</span></a>
-      <a href="products.html"><i class="fa fa-box"></i><span>منتجاتنا</span></a>
-      <a href="projects.html"><i class="fa fa-diagram-project"></i><span>مشاريعنا</span></a>
-      <a href="contact.html"><i class="fa fa-phone"></i><span>اتصل بنا</span></a>
-    `;
-    document.body.appendChild(bar);
-  }
-
-  initializeHeroStats();
-  injectMobileTabsBar();
-
   // Add keyboard navigation support
   document.addEventListener('keydown', (e) => {
     // Escape key to close modals/dropdowns
@@ -1565,3 +1550,5 @@ function fixMobileMenu() {
     initializeMobileMenu();
   }
 }
+
+// لا يوجد نص ساعات العمل ثابت في js، كل شيء يعتمد على الترجمة أو HTML

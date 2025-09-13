@@ -485,8 +485,8 @@ function initializeContactForm() {
   
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
+      e.preventDefault();
+      
       const formData = new FormData(contactForm);
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
@@ -496,27 +496,37 @@ function initializeContactForm() {
       submitBtn.disabled = true;
 
       try {
-        const response = await fetch(contactForm.action, {
+        // Send to our backend API
+        const response = await fetch('https://kayan-factory-backend.herokuapp.com/api/contact', {
           method: 'POST',
-          body: formData,
           headers: {
+            'Content-Type': 'application/json',
             'Accept': 'application/json'
-          }
+          },
+          body: JSON.stringify({
+            name: formData.get('name'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            message: formData.get('message')
+          })
         });
 
-        if (response.ok) {
-          showNotification('تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.', 'success');
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          showNotification(result.message || 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.', 'success');
           contactForm.reset();
         } else {
-          throw new Error('فشل في إرسال الرسالة');
+          throw new Error(result.message || 'فشل في إرسال الرسالة');
         }
       } catch (error) {
-        showNotification('حدث خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى.', 'error');
+        console.error('Contact form error:', error);
+        showNotification(error.message || 'حدث خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى.', 'error');
       } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
       }
-  });
+    });
   }
 }
 
@@ -1053,6 +1063,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeSearch();
   initializeDarkMode();
   initializeTestimonialsForm();
+  initializeAnalytics();
   fixMobileMenu();
 
   // Add keyboard navigation support
@@ -1459,39 +1470,55 @@ function initializeTestimonialsForm() {
   
   if (!testimonialForm) return;
 
-  testimonialForm.addEventListener('submit', (e) => {
+  testimonialForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const formData = new FormData(testimonialForm);
-    const testimonialData = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      service: formData.get('service'),
-      rating: formData.get('rating'),
-      message: formData.get('message'),
-      date: new Date().toISOString()
-    };
-
-    // Save to localStorage (in real app, send to server)
-    const testimonials = JSON.parse(localStorage.getItem('testimonials') || '[]');
-    testimonials.push({
-      ...testimonialData,
-      id: Date.now(),
-      status: 'pending',
-      approved: false
-    });
-    localStorage.setItem('testimonials', JSON.stringify(testimonials));
-
-    // Show success message
-    showNotification('شكراً لك! تم إرسال تقييمك بنجاح. سيتم مراجعته ونشره قريباً.', 'success');
+    const submitBtn = testimonialForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
     
-    // Reset form
-    testimonialForm.reset();
-    
-    // Reset star rating
-    document.querySelectorAll('.testimonial-form .rating-stars input[type="radio"]').forEach(radio => {
-      radio.checked = false;
-    });
+    // Show loading state
+    submitBtn.textContent = 'جاري الإرسال...';
+    submitBtn.disabled = true;
+
+    try {
+      const response = await fetch('https://kayan-factory-backend.herokuapp.com/api/testimonials', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          service: formData.get('service'),
+          rating: parseInt(formData.get('rating')),
+          message: formData.get('message')
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        showNotification(result.message || 'شكراً لك! تم إرسال تقييمك بنجاح. سيتم مراجعته ونشره قريباً.', 'success');
+        
+        // Reset form
+        testimonialForm.reset();
+        
+        // Reset star rating
+        document.querySelectorAll('.testimonial-form .rating-stars input[type="radio"]').forEach(radio => {
+          radio.checked = false;
+        });
+      } else {
+        throw new Error(result.message || 'فشل في إرسال التقييم');
+      }
+    } catch (error) {
+      console.error('Testimonial form error:', error);
+      showNotification(error.message || 'حدث خطأ في إرسال التقييم. يرجى المحاولة مرة أخرى.', 'error');
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
   });
 
   // Star rating interaction
@@ -1550,5 +1577,170 @@ function fixMobileMenu() {
     initializeMobileMenu();
   }
 }
+
+// Analytics and Visit Tracking
+function initializeAnalytics() {
+  // Track page visit
+  trackPageVisit();
+  
+  // Track page visibility changes
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      trackPageVisit();
+    }
+  });
+  
+  // Track page unload
+  window.addEventListener('beforeunload', () => {
+    trackVisitDuration();
+  });
+}
+
+// Track page visit
+async function trackPageVisit() {
+  try {
+    const visitData = {
+      page_url: window.location.href,
+      page_title: document.title,
+      referrer: document.referrer || null,
+      device_type: getDeviceType(),
+      browser: getBrowser(),
+      os: getOS(),
+      screen_resolution: `${screen.width}x${screen.height}`,
+      language: navigator.language || 'ar',
+      session_id: getOrCreateSessionId()
+    };
+
+    const response = await fetch('https://kayan-factory-backend.herokuapp.com/api/analytics/visit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(visitData)
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      if (result.data && result.data.visit_id) {
+        // Store visit ID for duration tracking
+        sessionStorage.setItem('current_visit_id', result.data.visit_id);
+        sessionStorage.setItem('visit_start_time', Date.now().toString());
+      }
+    }
+  } catch (error) {
+    console.error('Analytics tracking error:', error);
+  }
+}
+
+// Track visit duration
+async function trackVisitDuration() {
+  try {
+    const visitId = sessionStorage.getItem('current_visit_id');
+    const startTime = sessionStorage.getItem('visit_start_time');
+    
+    if (visitId && startTime) {
+      const duration = Math.floor((Date.now() - parseInt(startTime)) / 1000);
+      
+      if (duration > 0) {
+        await fetch(`https://kayan-factory-backend.herokuapp.com/api/analytics/visit/${visitId}/duration`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ duration })
+        });
+      }
+    }
+  } catch (error) {
+    console.error('Duration tracking error:', error);
+  }
+}
+
+// Get or create session ID
+function getOrCreateSessionId() {
+  let sessionId = sessionStorage.getItem('session_id');
+  if (!sessionId) {
+    sessionId = 'sess_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+    sessionStorage.setItem('session_id', sessionId);
+  }
+  return sessionId;
+}
+
+// Get device type
+function getDeviceType() {
+  const userAgent = navigator.userAgent;
+  if (/mobile|android|iphone|ipod|blackberry|iemobile|opera mini/i.test(userAgent)) {
+    return 'mobile';
+  } else if (/tablet|ipad|android(?!.*mobile)/i.test(userAgent)) {
+    return 'tablet';
+  }
+  return 'desktop';
+}
+
+// Get browser name
+function getBrowser() {
+  const userAgent = navigator.userAgent;
+  if (userAgent.includes('Chrome')) return 'Chrome';
+  if (userAgent.includes('Firefox')) return 'Firefox';
+  if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) return 'Safari';
+  if (userAgent.includes('Edge')) return 'Edge';
+  if (userAgent.includes('Opera')) return 'Opera';
+  return 'Unknown';
+}
+
+// Get operating system
+function getOS() {
+  const userAgent = navigator.userAgent;
+  if (userAgent.includes('Windows')) return 'Windows';
+  if (userAgent.includes('Mac')) return 'macOS';
+  if (userAgent.includes('Linux')) return 'Linux';
+  if (userAgent.includes('Android')) return 'Android';
+  if (userAgent.includes('iOS')) return 'iOS';
+  return 'Unknown';
+}
+
+// Load testimonials from backend
+async function loadTestimonials() {
+  try {
+    const response = await fetch('https://kayan-factory-backend.herokuapp.com/api/testimonials/public?limit=10');
+    const result = await response.json();
+    
+    if (response.ok && result.success) {
+      displayTestimonials(result.data);
+    }
+  } catch (error) {
+    console.error('Failed to load testimonials:', error);
+  }
+}
+
+// Display testimonials
+function displayTestimonials(testimonials) {
+  const testimonialsContainer = document.querySelector('.testimonials-grid');
+  if (!testimonialsContainer) return;
+
+  testimonialsContainer.innerHTML = testimonials.map(testimonial => `
+    <div class="testimonial-card card-legendary legendary-hover">
+      <div class="testimonial-content">
+        <div class="rating-stars">
+          ${'<i class="fa-solid fa-star"></i>'.repeat(testimonial.rating)}
+          ${'<i class="fa-regular fa-star"></i>'.repeat(5 - testimonial.rating)}
+        </div>
+        <p>"${testimonial.message}"</p>
+        <div class="testimonial-author">
+          <strong>${testimonial.name}</strong>
+          <span>${testimonial.service}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Initialize testimonials loading
+document.addEventListener('DOMContentLoaded', () => {
+  // Load testimonials after a short delay
+  setTimeout(loadTestimonials, 1000);
+});
 
 // لا يوجد نص ساعات العمل ثابت في js، كل شيء يعتمد على الترجمة أو HTML

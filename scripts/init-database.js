@@ -160,7 +160,7 @@ async function insertSampleData() {
   // Sample analytics data
   const sampleAnalytics = [
     {
-      page_url: 'https://kayanfactory.netlify.app/',
+  page_url: 'https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/',
       page_title: 'كيان الخليج للصناعة | الصفحة الرئيسية',
       referrer: 'https://www.google.com/search?q=كرتن+وول+الرياض',
       ip_address: '192.168.1.108',
@@ -175,9 +175,9 @@ async function insertSampleData() {
       created_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
     },
     {
-      page_url: 'https://kayanfactory.netlify.app/products.html',
+  page_url: 'https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/products.html',
       page_title: 'منتجاتنا | كيان الخليج',
-      referrer: 'https://kayanfactory.netlify.app/',
+  referrer: 'https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/',
       ip_address: '192.168.1.109',
       user_agent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X) AppleWebKit/605.1.15',
       device_type: 'mobile',
@@ -190,7 +190,7 @@ async function insertSampleData() {
       created_at: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString()
     },
     {
-      page_url: 'https://kayanfactory.netlify.app/contact.html',
+  page_url: 'https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/contact.html',
       page_title: 'اتصل بنا | كيان الخليج',
       referrer: 'https://www.facebook.com/',
       ip_address: '192.168.1.110',

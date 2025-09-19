@@ -45,8 +45,8 @@ Disallow: /*.bak
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://kayanfactory.netlify.app/sitemap.xml
+Sitemap: https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/sitemap.xml
 
 # Additional sitemaps
 # Host directive (optional; many crawlers ignore it)
-Host: kayanfactory.netlify.app
+Host: kayanalkhalij1.github.io

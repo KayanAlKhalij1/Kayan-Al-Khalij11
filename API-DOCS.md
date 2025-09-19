@@ -254,7 +254,7 @@ POST /api/analytics/visit
 Content-Type: application/json
 
 {
-  "page_url": "https://kayanfactory.netlify.app/",
+  "page_url": "https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/",
   "page_title": "كيان الخليج للصناعة | الصفحة الرئيسية",
   "referrer": "https://www.google.com",
   "device_type": "desktop",
@@ -339,7 +339,7 @@ GET /api/analytics/stats/overview?period=7d
     ],
     "top_pages": [
       {
-        "page_url": "https://kayanfactory.netlify.app/",
+  "page_url": "https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/",
         "page_title": "الصفحة الرئيسية",
         "visits": 500
       }
@@ -531,7 +531,7 @@ curl https://kayan-factory-backend.herokuapp.com/api/health
 
 ### 1. خطأ CORS
 ```
-Access to fetch at 'https://kayan-factory-backend.herokuapp.com/api/contact' from origin 'https://kayanfactory.netlify.app' has been blocked by CORS policy
+Access to fetch at 'https://kayan-factory-backend.herokuapp.com/api/contact' from origin 'https://kayanalkhalij1.github.io' has been blocked by CORS policy
 ```
 
 **الحل**: تأكد من إضافة Origin الصحيح في CORS configuration.
@@ -567,7 +567,7 @@ Access to fetch at 'https://kayan-factory-backend.herokuapp.com/api/contact' fro
 
 - **البريد الإلكتروني**: info@kayanfactory.com
 - **الهاتف**: +966545666924
-- **الموقع**: https://kayanfactory.netlify.app
+- **الموقع**: https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/
 
 ---
 

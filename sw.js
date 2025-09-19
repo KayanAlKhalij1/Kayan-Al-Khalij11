@@ -5,7 +5,7 @@ const CACHE_NAME = 'kayan-alkhalij-v2.0.0';
 const STATIC_CACHE = 'kayan-static-v2.0.0';
 const DYNAMIC_CACHE = 'kayan-dynamic-v2.0.0';
 
-// Files to cache immediately
+// Files to cache immediately (use relative paths to support GitHub Pages subpath hosting)
 const STATIC_FILES = [
   './',
   './index.html',

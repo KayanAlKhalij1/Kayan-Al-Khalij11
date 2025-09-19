@@ -20,7 +20,7 @@ describe('Kayan Factory API Tests', () => {
   };
 
   const testAnalytics = {
-    page_url: 'https://kayanfactory.netlify.app/',
+  page_url: 'https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/',
     page_title: 'كيان الخليج للصناعة',
     device_type: 'desktop',
     browser: 'Chrome',

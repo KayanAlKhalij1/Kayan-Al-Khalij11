@@ -162,7 +162,7 @@ JWT_SECRET=your-secret-key
 API_KEY=your-api-key
 RATE_LIMIT_WINDOW_MS=900000
 RATE_LIMIT_MAX_REQUESTS=100
-CORS_ORIGINS=https://kayanfactory.netlify.app
+CORS_ORIGINS=https://kayanalkhalij1.github.io,https://kayanalkhalij1.github.io/Kayan-Al-Khalij11
 ```
 
 ## 📧 إعداد Gmail للإيميلات
@@ -292,7 +292,7 @@ npm run init-db
 
 - **البريد الإلكتروني**: info@kayanfactory.com
 - **الهاتف**: +966545666924
-- **الموقع**: https://kayanfactory.netlify.app
+- **الموقع**: https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/
 
 ---
 

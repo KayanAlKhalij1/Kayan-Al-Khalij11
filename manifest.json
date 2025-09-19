@@ -2,12 +2,12 @@
   "name": "كيان الخليج للصناعة",
   "short_name": "كيان الخليج",
   "description": "رؤية هندسية متطورة في مجال الكرتن وول والكلادينج والنوافذ والأبواب",
-  "start_url": "/index.html",
+  "start_url": "/Kayan-Al-Khalij11/index.html",
   "display": "standalone",
   "background_color": "#0d47a1",
   "theme_color": "#0d47a1",
   "orientation": "portrait-primary",
-  "scope": "/",
+  "scope": "/Kayan-Al-Khalij11/",
   "lang": "ar",
   "dir": "rtl",
   "categories": ["business", "productivity", "utilities"],
@@ -65,7 +65,7 @@
       "name": "الرئيسية",
       "short_name": "الرئيسية",
       "description": "الانتقال للصفحة الرئيسية",
-      "url": "/index.html",
+  "url": "/Kayan-Al-Khalij11/index.html",
       "icons": [
         {
           "src": "window_icon_125687.svg",
@@ -77,7 +77,7 @@
       "name": "منتجاتنا",
       "short_name": "المنتجات",
       "description": "عرض منتجات الشركة",
-      "url": "/products.html",
+  "url": "/Kayan-Al-Khalij11/products.html",
       "icons": [
         {
           "src": "window_icon_125687.svg",
@@ -89,7 +89,7 @@
       "name": "اتصل بنا",
       "short_name": "الاتصال",
       "description": "معلومات الاتصال",
-      "url": "/contact.html",
+  "url": "/Kayan-Al-Khalij11/contact.html",
       "icons": [
         {
           "src": "window_icon_125687.svg",
@@ -101,7 +101,7 @@
       "name": "آراء العملاء",
       "short_name": "المراجعات",
       "description": "آراء وتقييمات العملاء",
-      "url": "/comments.html",
+  "url": "/Kayan-Al-Khalij11/comments.html",
       "icons": [
         {
           "src": "window_icon_125687.svg",
@@ -128,8 +128,8 @@
   ],
       "related_applications": [
       {
-        "platform": "webapp",
-        "url": "https://kayanfactory.netlify.app"
+  "platform": "webapp",
+  "url": "https://kayanalkhalij1.github.io/Kayan-Al-Khalij11"
       }
     ],
   "prefer_related_applications": false,
@@ -143,16 +143,16 @@
   "protocol_handlers": [
     {
       "protocol": "web+tel",
-      "url": "/contact.html?action=call"
+  "url": "/Kayan-Al-Khalij11/contact.html?action=call"
     },
     {
       "protocol": "web+mailto",
-      "url": "/contact.html?action=email"
+  "url": "/Kayan-Al-Khalij11/contact.html?action=email"
     }
   ],
   "file_handlers": [
     {
-      "action": "/contact.html",
+      "action": "/Kayan-Al-Khalij11/contact.html",
       "accept": {
         "text/plain": [".txt"],
         "application/pdf": [".pdf"]
@@ -160,7 +160,7 @@
     }
   ],
   "share_target": {
-    "action": "/contact.html",
+    "action": "/Kayan-Al-Khalij11/contact.html",
     "method": "POST",
     "enctype": "multipart/form-data",
     "params": {

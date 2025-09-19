@@ -33,7 +33,8 @@ app.use(helmet({
 // CORS configuration
 app.use(cors({
   origin: [
-    'https://kayanfactory.netlify.app',
+    'https://kayanalkhalij1.github.io',
+    'https://kayanalkhalij1.github.io/Kayan-Al-Khalij11',
     'http://localhost:3000',
     'http://localhost:8080',
     'http://127.0.0.1:5500'

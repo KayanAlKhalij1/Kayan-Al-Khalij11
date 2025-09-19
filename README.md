@@ -230,7 +230,7 @@ EMAIL_PASS=your-password
 
 - البريد الإلكتروني: info@kayanfactory.com
 - الهاتف: +966545666924
-- الموقع: https://kayanfactory.netlify.app
+- الموقع: https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/
 
 ## الترخيص
 

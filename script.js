@@ -30,140 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }, 100);
 });
 
-// Curated, reliable carousel images (local)
-const carouselImages = [
-  'smart-aluminium-windows-1024x683-1-1000x570.png',
-  'bg_header-cladding.jpg',
-  '9919016-1171360793.jpg',
-  'sasa6.jpg',
-  'WhatsApp Image 2025-07-31 at 12.35.10_3ca7ce88.jpg'
-];
-
-// Use only local images
-const allCarouselImages = carouselImages;
-
-let currentIndex = 0;
-let autoPlayInterval;
-
-// Enhanced carousel functionality
-function initializeCarousel() {
-  const carousel = document.getElementById('carousel');
-  if (!carousel) return; // gallery section removed per request
-
-  // pre-inserted <img> tags: reuse for reliability (no layout shift)
-  const slots = [];
-  if (slots.length === 0) {
-    // fallback: create once based on data
-    allCarouselImages.forEach((src, i) => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = `Slide ${i+1}`;
-      img.loading = i === 0 ? 'eager' : 'lazy';
-      img.decoding = 'async';
-      img.style.display = '';
-      carousel.appendChild(img);
-      slots.push(img);
-    });
-  } else {
-    // sync sources with curated array
-    slots.forEach((img, i) => { if (allCarouselImages[i]) { img.src = allCarouselImages[i]; } img.style.display=''; });
-  }
-
-  function updateCaptions(i){
-    const captions = [
-      {t:'واجهة زجاجية متطورة', s:'تنفيذ احترافي ومعايير جودة عالية'},
-      {t:'كلادينج عملي', s:'جماليات مع متانة ومقاومة'},
-      {t:'تفاصيل ألمنيوم دقيقة', s:'حلول هندسية موثوقة'},
-      {t:'تركيب احترافي', s:'فريق متخصص وخبرة طويلة'},
-      {t:'مشروع حديث', s:'نتائج تضيف قيمة للمباني'}
-    ];
-    const c = captions[i % captions.length];
-    if (captionTitle && captionSub && c){ captionTitle.textContent = c.t; captionSub.textContent = c.s; }
-  }
-
-  // create dots
-  if (dotsContainer) {
-    dotsContainer.innerHTML = '';
-    slots.forEach((_, i) => {
-      const dot = document.createElement('span');
-      dot.className = 'dot' + (i===0 ? ' active' : '');
-      dot.addEventListener('click', () => { currentIndex = i; showImage(currentIndex); resetAutoPlay(); track && track.scrollTo({left: track.clientWidth*i, behavior:'smooth'}); });
-      dotsContainer.appendChild(dot);
-    });
-  }
-
-  function setActiveDot(i){
-    if (!dotsContainer) return;
-    dotsContainer.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx===i));
-  }
-
-  function showImage(index) {
-    // Show active image via class
-    slots.forEach((img, i) => img.classList.toggle('is-active', i === index));
-    setActiveDot(index);
-    updateCaptions(index);
-  }
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % allCarouselImages.length;
-    showImage(currentIndex);
-  }
-
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + allCarouselImages.length) % allCarouselImages.length;
-    showImage(currentIndex);
-  }
-
-  // Event listeners with enhanced UX
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      prevImage();
-      resetAutoPlay();
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      nextImage();
-      resetAutoPlay();
-    });
-  }
-
-  // Arrows inside slider were removed in revert
-
-  // Auto-play functionality
-  function startAutoPlay() {
-    autoPlayInterval = setInterval(nextImage, 5000);
-  }
-
-  function resetAutoPlay() {
-    clearInterval(autoPlayInterval);
-    startAutoPlay();
-  }
-
-  // Initialize carousel
-  showImage(currentIndex);
-  // nothing extra on init
-  startAutoPlay();
-
-  // Pause auto-play on hover
-  carousel.addEventListener('mouseenter', () => {
-    clearInterval(autoPlayInterval);
-  });
-
-  carousel.addEventListener('mouseleave', startAutoPlay);
-
-  // Keyboard navigation
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft') {
-      prevImage();
-      resetAutoPlay();
-    } else if (e.key === 'ArrowRight') {
-      nextImage();
-      resetAutoPlay();
-    }
-  });
-}
+// Carousel removed per new design
 
 // Language switcher functionality (idempotent; prevents double-binding)
 let langSwitcherInitialized = false;
@@ -745,8 +612,8 @@ function initializeSEO() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "كيان الخليج للصناعة",
-    "url": "https://kayanfactory.netlify.app",
-    "logo": "https://kayanfactory.netlify.app/WhatsApp%20Image%202025-07-08%20at%2017.49.46_02d7f189_1753025271754.jpg",
+  "url": "https://kayanalkhalij1.github.io/Kayan-Al-Khalij11",
+  "logo": "https://kayanalkhalij1.github.io/Kayan-Al-Khalij11/WhatsApp%20Image%202025-07-08%20at%2017.49.46_02d7f189_1753025271754.jpg",
     "description": "رؤية هندسية متطورة في مجال الكرتن وول والكلادينج والنوافذ والأبواب",
     "address": {
       "@type": "PostalAddress",
@@ -839,31 +706,6 @@ function initializeWebVitals() {
 // Initialize GSAP animations
 function initializeGSAPAnimations() {
   if (typeof gsap !== 'undefined') {
-    // Hero section animations
-    gsap.from('.hero h1', {
-      duration: 1,
-      y: 50,
-      opacity: 0,
-      ease: 'power2.out',
-      delay: 0.5
-    });
-
-    gsap.from('.hero p', {
-      duration: 1,
-      y: 30,
-      opacity: 0,
-      ease: 'power2.out',
-      delay: 0.8
-    });
-
-    gsap.from('.hero .btn', {
-      duration: 1,
-      y: 20,
-      opacity: 0,
-      ease: 'power2.out',
-      delay: 1.1
-    });
-
     // Floating elements animation
     gsap.to('.floating-element', {
       y: -20,
@@ -1032,7 +874,6 @@ function formatDate(dateString) {
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
   ensureFontAwesome();
-  initializeCarousel();
   initializeLanguageSwitcher();
   loadAndSetLanguage();
   initializeScrollAnimations();
@@ -1057,6 +898,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeWebVitals();
   initializeGSAPAnimations();
   initializeCommentsSystem();
+  // New effects
+  initializeScrollProgressBar();
+  initializeRippleEffect();
+  initializeTypingEffect();
+  initializeTiltHover();
   
   // Initialize new features
   initializeWhatsAppWidget();
@@ -1095,16 +941,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const diff = touchStartX - touchEndX;
 
     if (Math.abs(diff) > swipeThreshold) {
-      const carousel = document.getElementById('carousel');
-      if (carousel && carousel.offsetParent !== null) {
-        if (diff > 0) {
-          var nextEl = document.getElementById('next');
-          if (nextEl) nextEl.click();
-        } else {
-          var prevEl = document.getElementById('prev');
-          if (prevEl) prevEl.click();
-        }
-      }
+      // no carousel to swipe
     }
   }
 
@@ -1150,7 +987,6 @@ window.addEventListener('unhandledrejection', (e) => {
 window.KayanWebsite = {
   setLanguage,
   showNotification,
-  initializeCarousel,
   initializeCommentsSystem
 };
 
@@ -1744,3 +1580,100 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // لا يوجد نص ساعات العمل ثابت في js، كل شيء يعتمد على الترجمة أو HTML
+
+// ===== Effects: Scroll Progress Bar =====
+function initializeScrollProgressBar() {
+  const bar = document.getElementById('scroll-progress-bar');
+  if (!bar) return;
+
+  const set = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+  };
+
+  set();
+  window.addEventListener('scroll', set, { passive: true });
+  window.addEventListener('resize', set);
+}
+
+// ===== Effects: Ripple on click =====
+function initializeRippleEffect() {
+  const candidates = document.querySelectorAll('.ripple-container, .btn, .nav-link, .quick-link');
+  candidates.forEach(el => {
+    // Avoid double attaching
+    if (el.dataset.rippleAttached) return;
+    el.dataset.rippleAttached = 'true';
+    el.style.position = el.style.position || 'relative';
+    el.style.overflow = el.style.overflow || 'hidden';
+    el.addEventListener('click', (e) => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const rect = el.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      el.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    });
+  });
+}
+
+// ===== Effects: Typing text =====
+function initializeTypingEffect() {
+  const nodes = document.querySelectorAll('[data-typing]');
+  nodes.forEach(node => {
+    if (node.dataset.typingInitialized) return;
+    node.dataset.typingInitialized = 'true';
+    const fullText = node.textContent.trim();
+    const speed = parseInt(node.getAttribute('data-typing-speed') || '80', 10);
+    node.textContent = '';
+
+    let i = 0;
+    const type = () => {
+      if (i <= fullText.length) {
+        node.textContent = fullText.slice(0, i);
+        i++;
+        setTimeout(type, speed);
+      }
+    };
+    // Start after small delay so layout is stable
+    setTimeout(type, 250);
+  });
+}
+
+// ===== Effects: Tilt hover (pointer devices) =====
+function initializeTiltHover() {
+  const cards = document.querySelectorAll('.card-legendary, .service-card, .project-card');
+  cards.forEach(card => {
+    if (card.dataset.tiltAttached) return;
+    card.dataset.tiltAttached = 'true';
+    card.classList.add('tilt-hover');
+
+    let rect;
+    const onMove = (e) => {
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      rect = rect || card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const cx = x / rect.width - 0.5; // -0.5 .. 0.5
+      const cy = y / rect.height - 0.5;
+      const tiltX = (-cy) * 6; // rotateX
+      const tiltY = cx * 6;    // rotateY
+      card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    };
+
+    const reset = () => {
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)';
+      rect = undefined;
+    };
+
+    card.addEventListener('mousemove', onMove);
+    card.addEventListener('mouseleave', reset);
+  });
+}

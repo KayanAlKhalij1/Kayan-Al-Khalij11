@@ -195,7 +195,7 @@ class EmailService {
           
           <div class="contact-info">
             <strong>📅 تاريخ الإرسال:</strong> ${new Date().toLocaleString('ar-SA')}<br>
-            <strong>🌐 الموقع:</strong> kayanfactory.netlify.app
+            <strong>🌐 الموقع:</strong> kayanalkhalij1.github.io/Kayan-Al-Khalij11
           </div>
           
           <div class="footer">
@@ -346,7 +346,7 @@ class EmailService {
           
           <div class="contact-info">
             <strong>📅 تاريخ الإرسال:</strong> ${new Date().toLocaleString('ar-SA')}<br>
-            <strong>🌐 الموقع:</strong> kayanfactory.netlify.app
+            <strong>🌐 الموقع:</strong> kayanalkhalij1.github.io/Kayan-Al-Khalij11
           </div>
           
           <div class="footer">
@@ -469,7 +469,7 @@ class EmailService {
               <strong>📞 للاستفسارات السريعة:</strong><br>
               الهاتف: +966545666924<br>
               البريد الإلكتروني: info@kayanfactory.com<br>
-              الموقع: kayanfactory.netlify.app
+              الموقع: kayanalkhalij1.github.io/Kayan-Al-Khalij11
             </div>
           </div>
           

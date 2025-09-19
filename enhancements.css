@@ -1,0 +1,139 @@
+:root{
+  --brand-500: #0b4da2;
+  --brand-600: #0a3f86;
+  --accent-gold: #d1a24a;
+  --muted: #6b7280;
+  --bg-glass: rgba(255,255,255,0.6);
+  --glass-border: rgba(255,255,255,0.12);
+  --card-radius: 14px;
+  --transition-fast: 180ms;
+  --transition: 320ms;
+  --shadow-1: 0 6px 18px rgba(13,47,92,0.08);
+  --shadow-2: 0 10px 30px rgba(13,47,92,0.12);
+  --text-dark: #0f1724;
+  --gradient-main: linear-gradient(90deg, var(--brand-600), #3b82f6);
+}
+
+body, button, input, select, textarea {
+  font-family: "Cairo", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text-dark);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.intro-banner {
+  background-image: linear-gradient(180deg, rgba(11,77,162,0.08), rgba(11,77,162,0.02));
+  padding: clamp(2rem, 6vw, 4rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+.intro-banner .intro-content { z-index: 2; position: relative; }
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--brand-600), var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+.text-glow {
+  color: var(--brand-600);
+  text-shadow: 0 6px 18px rgba(32,64,128,0.10), 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.card-legendary {
+  border-radius: var(--card-radius);
+  background: #ffffff;
+  box-shadow: var(--shadow-1);
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+  will-change: transform;
+  transform-origin: center;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+.card-legendary.legendary-hover:hover,
+.card-legendary.legendary-hover:focus-within {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2);
+}
+
+.glass-effect {
+  background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.5));
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  backdrop-filter: blur(6px) saturate(120%);
+}
+
+.legendary-hover {
+  transition: transform var(--transition-fast), filter var(--transition);
+}
+.legendary-hover:hover { transform: translateY(-4px) scale(1.01); filter: saturate(1.05); }
+
+.btn {
+  display: inline-flex;
+  gap: .6rem;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem 1.05rem;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+}
+.btn-primary {
+  background: var(--gradient-main);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(59,130,246,0.12);
+}
+.btn-secondary {
+  background: linear-gradient(90deg, #fff, #fff);
+  color: var(--brand-600);
+  border: 1px solid rgba(11,77,162,0.08);
+}
+
+.ripple-container { position: relative; overflow: hidden; }
+.ripple-container .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255,255,255,0.35);
+  animation: ripple 600ms linear;
+  pointer-events: none;
+}
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+.floating {
+  box-shadow: 0 8px 24px rgba(12,36,92,0.16);
+  transition: transform var(--transition-fast);
+}
+.floating:hover { transform: translateY(-6px) scale(1.02); }
+
+#back-to-top { right: 1rem; bottom: 1.25rem; position: fixed; z-index: 9999; }
+
+/* Move WhatsApp widget and toggle to lower-left (non-destructive) */
+#whatsapp-widget { max-width: 320px; width: 100%; left: 1rem; right: auto; bottom: 5.5rem; position: fixed; z-index: 9998; }
+#whatsapp-toggle { left: 1rem; right: auto; bottom: 1.25rem; position: fixed; z-index: 9999; }
+
+.scroll-progress { position: fixed; inset: 0 auto auto 0; width: 100%; height: 4px; z-index: 9999; pointer-events: none; }
+.scroll-progress__track { width: 100%; height: 4px; background: transparent; }
+.scroll-progress__bar { width: 0%; height: 100%; background: linear-gradient(90deg, var(--brand-600), var(--accent-gold)); transition: width 120ms linear; }
+
+.project-card img, .blog-image img {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: transform var(--transition);
+}
+.project-card:hover img, .blog-card:hover img { transform: scale(1.03); }
+
+@media (max-width: 800px) {
+  .nav-flex { gap: .6rem; align-items: center; }
+  nav#main-nav { display: none; }
+  .intro-banner { padding: 2rem 0; }
+  .product-cards-grid { gap: 1rem; }
+}
+
+a:focus, button:focus, input:focus {
+  outline: 3px solid rgba(11,77,162,0.12);
+  outline-offset: 3px;
+}
